@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb70901443dd3e42aeca3a34b9e4975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
+  playerNumber: 1
 --- !u!114 &406502371666657744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +73,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47601e4155e0fc4ab3473662cfef42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMultiplier: 100
+  speedMultiplier: 50
+  breakValue: 10
+  speedLimit: 10
+  hoverForce: 3000
 --- !u!50 &890171377
 Rigidbody2D:
   serializedVersion: 4
@@ -87,14 +90,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &890171376
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -153,7 +156,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 406502371666657746}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1275cc830e389a849847dc2e7a5793b2, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

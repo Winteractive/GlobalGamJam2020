@@ -148,7 +148,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 84136857}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -253,7 +253,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 314904713}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -372,7 +372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &446764894
 GameObject:
@@ -402,7 +402,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 446764894}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -776,10 +776,31 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 890171377, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
       propertyPath: speedMultiplier
-      value: 1500
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
+      propertyPath: speedLimit
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
+      propertyPath: breakValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
+      propertyPath: hoverForce
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2932036538450026213, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 1275cc830e389a849847dc2e7a5793b2, type: 2}
     - target: {fileID: 3248044616911460497, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: playerNumber
@@ -815,7 +836,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1452727704}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -920,7 +941,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1591160193}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -995,7 +1016,7 @@ Transform:
   m_LocalScale: {x: 20, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1808682854
 GameObject:
@@ -1068,7 +1089,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1830136555}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1173,7 +1194,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2102482675}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db2527db07356f34bbd7b0a8394a9bf9, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
