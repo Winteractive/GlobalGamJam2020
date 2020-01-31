@@ -613,10 +613,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 08d75f4f-2a32-48b0-9519-82c245f87434
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: GlobalGamJam2020
+  organizationId: winteractivegames
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
