@@ -80,7 +80,7 @@ public static class InputManager
     }
     public static void SetUpPlayerNumbers(int numberOfPlayers)
     {
-        for (int i = 1; i <= numberOfPlayers; i++)
+        for (int i = 0; i <= numberOfPlayers; i++)
         {
             SetUpPlayerNumber(i);
         }

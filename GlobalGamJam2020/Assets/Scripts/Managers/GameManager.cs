@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour, IMediatorListener
             INSTANCE = this;
             GlobalMediator.AddListener(this);
             RumbleManager.Initialize();
+            ServiceLocator.Initialize();
+            InputManager.Initialize();
             DontDestroyOnLoad(gameObject);
         }
         //Time.timeScale = 0.5f;
