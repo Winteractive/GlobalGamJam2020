@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e569fa57255c2244d8edc05518aab06f, type: 3}
+  m_Name: FF6EB229-25CE-4F4F-B331-95A1BF17617C
+  m_EditorClassIdentifier: 
+  objectName: cloudBank
+  id: 2130403990
+  guid: FF6EB229-25CE-4F4F-B331-95A1BF17617C
