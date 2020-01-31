@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 74ac27596dedd54c8afa7249eadb96d7
     GuidInternal: 
-    m_lastTime: -8586211317580194898
+    m_lastTime: -8586211267058441351
     List:
     - name: cloudBank
       guid: 29b26effce254f4fb33195a1bf17617c
@@ -47,7 +47,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 7eba7e574eeb6f469ffeae9a2028e78d
     GuidInternal: 
-    m_lastTime: -8586211317580354477
+    m_lastTime: -8586211267058471271
     List:
     - name: test_play
       guid: ef21f9525dddfa4da6e72a9d4c93c1a4
@@ -59,8 +59,20 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\test_play
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 1.018417
+      minDuration: 1.018417
+    - name: test_play2
+      guid: 9659ed3c8809a448ac77227089465194
+      id: 3899496084
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test_play2
+        ObjectType: 3
+      Path: Default Work Unit\test_play2
+      maxAttenuation: 0
+      maxDuration: 1.018417
+      minDuration: 1.018417
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -89,6 +101,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8586211317580155011
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /GlobalGameJam2020
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
