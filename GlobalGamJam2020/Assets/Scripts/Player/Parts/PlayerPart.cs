@@ -4,10 +4,15 @@ using UnityEngine;
 
 public abstract class PlayerPart : MonoBehaviour
 {
-    protected PlayerNumber playerNumber;
-    public virtual void Initialize(PlayerNumber playerNumber)
+    protected int playerNumber;
+    public void Initialize(int playerNumber)
     {
         this.playerNumber = playerNumber;
+        CustomStart();
+    }
+    public virtual void CustomStart()
+    {
+
     }
 
 }

@@ -8,10 +8,9 @@ public class PlayerInput : PlayerPart
     InputSystemControls inputs;
     bool holdingCharge;
 
-    public override void Initialize(PlayerNumber playerNumber)
+    public override void CustomStart()
     {
-        base.Initialize(playerNumber);
-        InputManager.SetPlayerNumberUpdateDevice(playerNumber.id, InputManager_OnChanges);
+        InputManager.SetPlayerNumberUpdateDevice(playerNumber, InputManager_OnChanges);
         InputManager_OnChanges();
         inputs.Player.Charge.started += Charge_started;
         inputs.Player.Charge.canceled += Charge_canceled;
@@ -30,7 +29,7 @@ public class PlayerInput : PlayerPart
     private void InputManager_OnChanges()
     {
         inputs?.Disable();
-        inputs = InputManager.GetInputActions(playerNumber.id);
+        inputs = InputManager.GetInputActions(playerNumber);
         inputs?.Enable();
     }
 
@@ -58,7 +57,7 @@ public class PlayerInput : PlayerPart
         
         GlobalMediator.SendMessage(GameEvents.PLAYER_INPUT, new InputMessage
         {
-            playerNumber = playerNumber.id,
+            playerNumber = playerNumber,
             leftStick = inputs.Player.Movement.ReadValue<Vector2>(),
             charge = holdingCharge,
         });
