@@ -3,19 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInput : PlayerPart
 {
-    PlayerNumber playerNumber;
     InputSystemControls inputs;
     bool holdingCharge;
-    // Start is called before the first frame update
-    void Start()
+
+    public override void Initialize(PlayerNumber playerNumber)
     {
-        playerNumber = GetComponent<PlayerNumber>();
+        base.Initialize(playerNumber);
         InputManager.SetPlayerNumberUpdateDevice(playerNumber.id, InputManager_OnChanges);
         InputManager_OnChanges();
         inputs.Player.Charge.started += Charge_started;
-        inputs.Player.Charge.canceled += Charge_canceled; ;
+        inputs.Player.Charge.canceled += Charge_canceled;
     }
 
     private void Charge_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -27,7 +26,6 @@ public class PlayerInput : MonoBehaviour
     {
         holdingCharge = true;
     }
-
 
     private void InputManager_OnChanges()
     {
