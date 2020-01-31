@@ -71,6 +71,7 @@ public static class GlobalMediator
 [Flags]public enum GameEvents
 {
     NONE       = 0,
+    PLAYER_INPUT = 1 << 0,
 }
 
 public interface IMediatorListener
