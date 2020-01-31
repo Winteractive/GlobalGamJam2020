@@ -1,0 +1,33 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "c4ed6d49-cdc9-463d-b52a-da79ffee6475",
+            "actions": [
+                {
+                    "name": "PressingSpace",
+                    "type": "Button",
+                    "id": "66c58965-b410-402a-af7b-cc19ea7ccfb4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8b18c563-5679-4285-9e13-4f81660f386e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PressingSpace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
