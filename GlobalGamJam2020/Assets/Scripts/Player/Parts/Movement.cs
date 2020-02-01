@@ -11,7 +11,6 @@ public class Movement : PlayerPart, IMediatorListener
     [SerializeField]private bool isGrounded = false;
     private bool isCharging = false;
     private bool isBroken = false;
-    public float hoverForce = 3000;
     private Rigidbody2D rb;
 
 
@@ -41,13 +40,8 @@ public class Movement : PlayerPart, IMediatorListener
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
-        if (isCharging)
+        if (isCharging || !isGrounded)
             return;
-
-        if (!isGrounded)
-        {
-            inputDirection = Vector2.zero;
-        }
 
         //if (inputDirection.x < 0.5f || inputDirection.x < -0.5f) return;
 
@@ -69,11 +63,6 @@ public class Movement : PlayerPart, IMediatorListener
             //Debug.Log("limiting speed");
         }
 
-    }
-
-    public void OnMediatorMessageReceived(GameEvents events, object data)
-    {
-        
     }
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
@@ -113,7 +102,7 @@ public class Movement : PlayerPart, IMediatorListener
         }
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
         {
-            if (data is PlayerData chargeState)
+            if (data is PlayerChargeReleaseData chargeState)
             {
                 if (chargeState.id == playerNumber)
                 {

@@ -17,13 +17,12 @@ public class RepairZone : PlayerPart, IMediatorListener
     }
     private void Update()
     {
-        
-
         if (timer > timeBeforeRepair)
         {
             timer = 0;
             foreach (var playerToRepair in playersInsideTrigger)
             {
+                Debug.Log("Repair..");
                 GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair});
             }
         }

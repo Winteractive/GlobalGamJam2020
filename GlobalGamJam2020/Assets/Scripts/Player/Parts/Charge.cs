@@ -118,7 +118,7 @@ public class Charge : PlayerPart, IMediatorListener
 
         rigi.AddForce(aimDirection * chargePower, ForceMode2D.Impulse);
 
-        GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_CANCELLED, new PlayerChargeReleaseData
+        GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_RELEASED, new PlayerChargeReleaseData
         {
             id = playerNumber,
             releasedPower = chargePower
