@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 891b6d05e7a04534caa6dac0156cd7b6, type: 3}
   m_Name: AnimationInfo
   m_EditorClassIdentifier: 
-  FPS: 12
+  FPS: 2
   TransitionsTo: 
+  loop: 1

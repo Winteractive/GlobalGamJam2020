@@ -26,6 +26,7 @@ public static class AudioManager
                 case GameEvents.PLAYER_INPUT:
                     PlayerInputData inputData = (PlayerInputData)data;
                     string player = inputData.id == 1 ? "blue_" : "pink_";
+
                     AkSoundEngine.SetRTPCValue(player + "volume", Mathf.Abs(inputData.axis.x));
                     break;
                 case GameEvents.PLAYER_GROUND_CHECK:
@@ -63,7 +64,7 @@ public static class AudioManager
                             AkSoundEngine.PostEvent("blue_release_charge", targetObject);
                             break;
                         case UnitAnimator.Character.Pink:
-                            AkSoundEngine.PostEvent("blue_release_charge", targetObject);
+                            AkSoundEngine.PostEvent("pink_release_charge", targetObject);
                             break;
                         default:
                             break;

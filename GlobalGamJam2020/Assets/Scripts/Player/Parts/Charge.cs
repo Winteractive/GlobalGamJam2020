@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Charge : PlayerPart, IMediatorListener
 {
+
+    public GameObject chargeDisplay;
     Rigidbody2D rigi;
     bool alowedToCharge;
     bool isCharging;
@@ -99,6 +101,8 @@ public class Charge : PlayerPart, IMediatorListener
         if (aimDirection != inputDirection && inputDirection != Vector2.zero && Vector2.Dot(Vector2.up, inputDirection.normalized) > 0)
         {
             aimDirection = inputDirection;
+            chargeDisplay.transform.localPosition = aimDirection;
+
         }
         // Aiming with inputMessage.leftStick;
         // Locks Aiming to set angles
