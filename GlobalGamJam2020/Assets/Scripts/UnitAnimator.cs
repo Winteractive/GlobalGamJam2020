@@ -162,8 +162,11 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                         if (player.id == playerNumber)
                         {
                             if(currentAnimationName != "Squat" && currentAnimationName != "OnTop" && currentAnimationName != "ChargeUp" && currentAnimationName != "InAir")
+                            {
                                 TryStartAnimation("Idle");
-                            SetFrameRate("Idle");
+                                SetFrameRate("Idle");
+                            }
+                                
                         }
                     }
                     break;
