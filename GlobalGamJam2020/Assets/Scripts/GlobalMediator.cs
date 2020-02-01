@@ -73,11 +73,12 @@ public enum GameEvents
 {
     PLAYER_INPUT = 1 << 0,
     PLAYER_GROUND_CHECK = 1 << 1,
-    PLAYER_CHARGING = 1 << 2,
-
-
-    PLAYER_RELEASED_CHARGE = 1 << 3,
-    PLAYER_CANCELED_CHARGE = 1 << 4,
+    PLAYER_CHARGE_START = 1 << 2,
+    PLAYER_CHARGE_RELEASED = 1 << 3,
+    PLAYER_CHARGE_CANCELLED = 1 << 4,
+    PLAYER_TAKE_DAMAGE = 1 << 5,
+    PLAYER_BREAK = 1 << 6,
+    PLAYER_REPAIRED = 1 << 7,
 }
 
 // walking + direction + id

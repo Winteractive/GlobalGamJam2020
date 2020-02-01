@@ -44,7 +44,6 @@ public class Charge : PlayerPart, IMediatorListener
 
             }
         }
-
         if(events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
             if(data is TagCheck.TagCheckMessage tagMessage)
@@ -52,16 +51,24 @@ public class Charge : PlayerPart, IMediatorListener
                 if(playerNumber == tagMessage.playerNumber)
                 {
                     alowedToCharge = tagMessage.triggerInside;
+                    if (!tagMessage.triggerInside)
+                    {
+                        Reset();
+                        SendChargeMessage(GameEvents.PLAYER_CHARGE_CANCELLED);
+                    }
                 }
             }
         }
-
-
     }
+
     public void Charging(Vector2 inputDirection)
     {
-        //Charging
-        isCharging = true;
+        if (!isCharging)
+        {
+            isCharging = true;
+            SendChargeMessage(GameEvents.PLAYER_CHARGE_START);
+        }
+
         chargePower += chargePowerIncrement * Time.deltaTime;
         if (chargePower > maxChargePower)
         {
@@ -73,9 +80,10 @@ public class Charge : PlayerPart, IMediatorListener
             aimDirection = inputDirection;
         }
 
+        Debug.Log("Charging");
         // Aiming with inputMessage.leftStick;
         // Locks Aiming to set angles
-        SendChargeMessage(GameEvents.PLAYER_CHARGING);
+
     }
     public void ReleaseCharge(Vector2 inputDirection)
     {
@@ -87,26 +95,28 @@ public class Charge : PlayerPart, IMediatorListener
         if (Vector2.Dot(Vector2.up, inputDirection.normalized) < 0)
         {
             Reset();
-            SendChargeMessage(GameEvents.PLAYER_CANCELED_CHARGE);
+            SendChargeMessage(GameEvents.PLAYER_CHARGE_CANCELLED);
             return;
         }
 
         rigi.AddForce(aimDirection * chargePower, ForceMode2D.Impulse);
 
+        SendChargeMessage(GameEvents.PLAYER_CHARGE_RELEASED);
         Reset();
-        SendChargeMessage(GameEvents.PLAYER_CHARGING);
     }
     public void Reset()
     {
         aimDirection = Vector2.zero;
         chargePower = minChargePower;
     }
+
     public void SendChargeMessage(GameEvents gameEvents)
     {
         GlobalMediator.SendMessage(gameEvents, new ChargeMessage
         {
             playerNumber = playerNumber,
-            charging = isCharging
+            charging = isCharging,
+            power = chargePower
         });
 
     }
@@ -114,6 +124,7 @@ public class Charge : PlayerPart, IMediatorListener
     {
         public int playerNumber;
         public bool charging;
+        public float power;
     }
 
     private void OnDrawGizmos()

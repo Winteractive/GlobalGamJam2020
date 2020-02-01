@@ -6,10 +6,12 @@ public class Movement : PlayerPart, IMediatorListener
 {
     private Vector2 movementDirection;
     public float speedMultiplier = 10;
-    public float breakValue = 100;
+    public float brakeValue = 100;
     public float speedLimit = 100;
     [SerializeField]private bool isGrounded = false;
     private bool isCharging = false;
+    private bool isBroken = false;
+    public float hoverForce = 3000;
     private Rigidbody2D rb;
 
 
@@ -36,12 +38,12 @@ public class Movement : PlayerPart, IMediatorListener
         {
             if (rb.velocity.x < -1)
             {
-                rb.velocity += new Vector2(breakValue * Time.deltaTime, 0);
+                rb.velocity += new Vector2(brakeValue * Time.deltaTime, 0);
                 //Debug.Log("breaking");
             }
             else if (rb.velocity.x > 1)
             {
-                rb.velocity -= new Vector2(breakValue * Time.deltaTime, 0);
+                rb.velocity -= new Vector2(brakeValue * Time.deltaTime, 0);
                 //Debug.Log("breaking");
             }
         }
@@ -58,7 +60,6 @@ public class Movement : PlayerPart, IMediatorListener
             //Debug.Log("limiting speed");
         }
 
-        //Debug.Log("Moving!");
     }
 
     public void OnMediatorMessageReceived(GameEvents events, object data)
@@ -84,17 +85,31 @@ public class Movement : PlayerPart, IMediatorListener
             }
         }
 
-        if (events.HasFlag(GameEvents.PLAYER_CHARGING))
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START ) && events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED) )
         {
             if (data is Charge.ChargeMessage chargeState)
             {
                 if (chargeState.playerNumber == playerNumber)
                 {
-
                     isCharging = chargeState.charging;
                 }
 
             }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_BREAK))
+        {
+            if (data is PlayerHealth.BreakMessage breakData)
+            {
+                if (breakData.playerNumber == playerNumber)
+                {
+                    isBroken = true;
+                }
+            }
+        }
+
+        if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
+        {
+            isBroken = false;
         }
     }
 
