@@ -17,7 +17,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
     public int currentFrame;
     private Sprite[] currentAnimation;
-    private UnitAnimationInfo currentInfo;
+    [SerializeField] private UnitAnimationInfo currentInfo;
 
 
     public enum Character { Blue, Pink };
@@ -29,6 +29,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
     public override void Initialize(int playerNumber)
     {
         base.Initialize(playerNumber);
+        GlobalMediator.AddListener(this);
         spriteRenderer = GetComponent<SpriteRenderer>();
         foundAnimations = new Dictionary<string, Sprite[]>();
         foundInfo = new Dictionary<string, UnitAnimationInfo>();
@@ -81,6 +82,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
             if (!string.IsNullOrEmpty(currentInfo.TransitionsTo))
             {
                 TryStartAnimation(currentInfo.TransitionsTo);
+                SetFrameRate(currentInfo.TransitionsTo);
             }
             currentFrame = 0;
         }
@@ -92,18 +94,57 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, object data)
     {
-        if (data is int == false) return; // to weak
-
-        int id = (int)data;
-        if (id != playerNumber) return;
-
-
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START)) // Example
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START))
         {
-            TryStartAnimation("ChargeUp");
-            SetFrameRate("ChargeUp");
+            if (data is Charge.ChargeMessage charge)
+            {
+                if (charge.playerNumber == playerNumber)
+                {
+                    if (charge.charging)
+                    {
+                        TryStartAnimation("ChargeUp");
+                        SetFrameRate("ChargeUp");
+                    }
+                }
+            }
         }
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
+        {
+            if (data is Charge.ChargeMessage charge)
+            {
+                if (charge.playerNumber == playerNumber)
+                {
+                    TryStartAnimation("InAir");
+                    SetFrameRate("InAir");
 
+                }
+            }
+        }
+        if(events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
+        {
+            if(data is TagCheck.TagCheckMessage tagMessage)
+            {
+                if (tagMessage.playerNumber == playerNumber)
+                {
+                    if(tagMessage.triggerInside)
+                    {
+                        TryStartAnimation("Idle");
+                        SetFrameRate("Idle");
+                    }
+                }
+            }
+        }
+        if(events.HasFlag(GameEvents.PLAYER_BREAK))
+        {
+            if(data is int breakPlayerNumber)
+            {
+                if(breakPlayerNumber == playerNumber)
+                {
+                    TryStartAnimation("Sleep");
+                    SetFrameRate("Sleep");
+                }
+            }
+        }
     }
 
     public void TryStartAnimation(string animation)
@@ -135,6 +176,5 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
         currentFrame = -1;
         currentAnimation = sprites;
-
     }
 }

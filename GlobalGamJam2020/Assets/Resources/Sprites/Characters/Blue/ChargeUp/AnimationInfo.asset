@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: AnimationInfo
   m_EditorClassIdentifier: 
   FPS: 12
+  TransitionsTo: ChargeHold

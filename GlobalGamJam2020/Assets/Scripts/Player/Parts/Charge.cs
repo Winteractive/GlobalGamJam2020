@@ -79,8 +79,6 @@ public class Charge : PlayerPart, IMediatorListener
         {
             aimDirection = inputDirection;
         }
-
-        Debug.Log("Charging");
         // Aiming with inputMessage.leftStick;
         // Locks Aiming to set angles
 

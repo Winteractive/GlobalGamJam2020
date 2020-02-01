@@ -27,7 +27,6 @@ public class PlayerHealth : PlayerPart, IMediatorListener
     private void TakeDamage()
     {
         currenthealth--;
-        Debug.Log("health is now: " + currenthealth);
         // signal damage taken
         BreakCheck();
     }
@@ -37,23 +36,15 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         if (currenthealth <= 0)
         {
             Debug.Log("PLAYER "+ playerNumber + " IS DED");
-            GlobalMediator.SendMessage(GameEvents.PLAYER_BREAK, new BreakMessage {
-                playerNumber = playerNumber
-            });
+            GlobalMediator.SendMessage(GameEvents.PLAYER_BREAK, playerNumber);
         }
     }
 
     private void GetRepaired(int amount)
     {
-        Debug.Log("Getting Repaired");
         currenthealth += amount;
-
         if (currenthealth > maxHealth)
             currenthealth = maxHealth;
-        //GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new BreakMessage
-        //{
-        //    playerNumber = playerNumber
-        //});
     }
 
     public void OnMediatorMessageReceived(GameEvents events, object data)

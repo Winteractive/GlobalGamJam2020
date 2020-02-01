@@ -80,6 +80,7 @@ public enum GameEvents
     PLAYER_BREAK = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
     PLAYER_PLAYER_UNDER_ME = 1 << 8,
+    PLAYER_SLEEP = 1<< 9,
     
 }
 

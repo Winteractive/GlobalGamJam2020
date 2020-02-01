@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 890171376}
   - component: {fileID: 2932036538450026213}
   - component: {fileID: 7565284245965822466}
+  - component: {fileID: 1783174568502863527}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -223,6 +224,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secretMultiplier: 2
+--- !u!114 &1783174568502863527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406502371666657746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e806f5e9828be5c4385d39ea23a6e1ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFrame: 0
+  currentInfo: {fileID: 0}
 --- !u!1 &4976728615974450795
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +250,7 @@ GameObject:
   - component: {fileID: 6896185232031255147}
   - component: {fileID: 5578368378965023437}
   - component: {fileID: 8393224824021774568}
+  - component: {fileID: 7272621863871919486}
   m_Layer: 0
   m_Name: UnderSide
   m_TagString: Untagged
@@ -250,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4976728615974450795}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 406502371666657745}
@@ -269,7 +285,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01216653, y: -0.42432046}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -280,7 +296,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85424155, y: 0.16657901}
+  m_Size: {x: 0.7, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &5578368378965023437
 MonoBehaviour:
@@ -309,7 +325,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToTriggerOn: Player
-  triggerEventsToTrigger: 2
+  triggerEventsToTrigger: 256
+--- !u!114 &7272621863871919486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976728615974450795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7461f83392692b44f95e55e4470c9cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableEvents: 64
+  enableEvents: 128
 --- !u!1 &8250680528445232625
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,3 +426,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairAmountPerUpdate: 1
+  timeBeforeRepair: 0.5

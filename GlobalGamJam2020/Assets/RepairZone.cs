@@ -25,6 +25,7 @@ public class RepairZone : PlayerPart, IMediatorListener
             foreach (var playerToRepair in playersInsideTrigger)
             {
                 GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerHealth.RepairMessage { playerNumber = playerToRepair, repairAmount = repairAmountPerUpdate });
+                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, playerNumber);
             }
         }
         else

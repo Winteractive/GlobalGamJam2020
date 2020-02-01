@@ -31,6 +31,10 @@ public class Movement : PlayerPart, IMediatorListener
         {
             inputDirection = Vector2.zero;
         }
+
+        //if (inputDirection.x < 0.5f || inputDirection.x < -0.5f) return;
+
+
         movementDirection = new Vector2(inputDirection.x, 0) * Time.deltaTime * speedMultiplier;
 
 
@@ -85,7 +89,7 @@ public class Movement : PlayerPart, IMediatorListener
             }
         }
 
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START ) && events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED) )
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START ) || events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED) )
         {
             if (data is Charge.ChargeMessage chargeState)
             {
@@ -98,9 +102,9 @@ public class Movement : PlayerPart, IMediatorListener
         }
         if (events.HasFlag(GameEvents.PLAYER_BREAK))
         {
-            if (data is PlayerHealth.BreakMessage breakData)
+            if (data is int breakPlayerNumber)
             {
-                if (breakData.playerNumber == playerNumber)
+                if (breakPlayerNumber == playerNumber)
                 {
                     isBroken = true;
                 }

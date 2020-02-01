@@ -103,7 +103,6 @@ public static class InputManager
         int playerNumber = 1;
         if (!string.IsNullOrWhiteSpace(deviceSplit))
         {
-            Debug.Log(deviceSplit);
             playerNumber += int.Parse(deviceSplit);
         }
         //Debug.Log($" {device.name} - {device.displayName} => {deviceSplit} => {playerNumber} ");
