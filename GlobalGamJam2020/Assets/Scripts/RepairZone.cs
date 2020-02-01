@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepairZone : PlayerPart, IMediatorListener
 {
-    List<int> playersInsideTrigger = new List<int>();
+    List<PlayerHealth> playersInsideTrigger = new List<PlayerHealth>();
     public int repairAmountPerUpdate;
     public float timeBeforeRepair = 0.5f;
     float timer;
@@ -22,8 +22,10 @@ public class RepairZone : PlayerPart, IMediatorListener
             timer = 0;
             foreach (var playerToRepair in playersInsideTrigger)
             {
-                Debug.Log("Repair..");
-                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair});
+                if(playerToRepair.currenthealth < playerToRepair.maxHealth)
+                {
+                    GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair.playerNumber});
+                }
             }
         }
         else
@@ -37,7 +39,7 @@ public class RepairZone : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
-        if(events.HasFlag(GameEvents.PLAYER_REPAIRED))
+        if(events.HasFlag(GameEvents.PLAYER_REPAIR_TRIGGER_BOX))
         {
             if(data is PlayerTriggerBoxData tagMessage)
             {
@@ -45,12 +47,12 @@ public class RepairZone : PlayerPart, IMediatorListener
                 {
                     if(tagMessage.enterExit)
                     {
-                        playersInsideTrigger.Add(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Add(tagMessage.collidingObject.GetComponent<PlayerHealth>());
 
                     }
                     else
                     {
-                        playersInsideTrigger.Remove(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Remove(tagMessage.collidingObject.GetComponent<PlayerHealth>());
                     }
                 }
             }

@@ -100,7 +100,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currenthealth: 0
   maxHealth: 3
-  powerDamageThreshold: 15
 --- !u!114 &2319794016118456010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +116,7 @@ MonoBehaviour:
   chargePowerIncrement: 10
   maxChargePower: 20
   minChargePower: 10
+  powerDamageThresholdWhenHittingFloor: 15
 --- !u!50 &890171377
 Rigidbody2D:
   serializedVersion: 4
@@ -228,6 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFrame: 0
   currentInfo: {fileID: 0}
+  currentAnimationName: 
 --- !u!58 &4149572714453861502
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -461,7 +462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToTriggerOn: Player
-  eventsToTrigger: 128
+  eventsToTrigger: 8192
 --- !u!114 &2064925315985685280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,4 +476,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairAmountPerUpdate: 1
-  timeBeforeRepair: 0.5
+  timeBeforeRepair: 1

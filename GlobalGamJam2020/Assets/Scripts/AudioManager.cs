@@ -11,7 +11,7 @@ public static class AudioManager
     {
         GlobalMediator.AddListener(PlaySoundEvent);
         targetObject = new GameObject("@Wwise Audio Target");
-        AkSoundEngine.PostEvent("bgm_start", targetObject);
+        
 
     }
 
@@ -75,6 +75,7 @@ public static class AudioManager
                 case GameEvents.PLAYER_TAKE_DAMAGE:
                     break;
                 case GameEvents.PLAYER_REPAIRED:
+                    AkSoundEngine.PostEvent("player_repair", targetObject);
                     break;
                 case GameEvents.PLAYER_IS_MOUNTING:
                     break;
@@ -86,6 +87,9 @@ public static class AudioManager
                     break;
                 case GameEvents.PLAYER_COLLIDE_WITH_PLAYER:
                     AkSoundEngine.PostEvent("players_collide", targetObject);
+                    break;
+                case GameEvents.GAME_STARTED:
+                    AkSoundEngine.PostEvent("bgm_start", targetObject);
                     break;
                 default:
                     break;

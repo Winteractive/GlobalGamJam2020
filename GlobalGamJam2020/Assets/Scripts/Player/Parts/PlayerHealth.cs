@@ -6,7 +6,7 @@ public class PlayerHealth : PlayerPart, IMediatorListener
 {
     public int currenthealth;
     public int maxHealth;
-    public float powerDamageThreshold = 15;
+    
 
     private void Start()
     {
@@ -14,16 +14,6 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         GlobalMediator.AddListener(this);
     }
 
-    public struct BreakMessage 
-    {
-        public int playerNumber;
-    }
-    public struct RepairMessage
-    {
-        public int playerNumber;
-        public int repairAmount;
-
-    }
     private void TakeDamage()
     {
         currenthealth--;
@@ -45,7 +35,7 @@ public class PlayerHealth : PlayerPart, IMediatorListener
 
     private void GetRepaired()
     {
-        currenthealth++;
+        currenthealth += maxHealth;
         if (currenthealth > maxHealth)
             currenthealth = maxHealth;
     }
@@ -54,9 +44,13 @@ public class PlayerHealth : PlayerPart, IMediatorListener
     {
         if (events.HasFlag(GameEvents.PLAYER_TAKE_DAMAGE))
         {
-            
-            //compare event player number to this player number
-            TakeDamage();
+            if (data is PlayerData repairMessage)
+            {
+                if (playerNumber == repairMessage.id)
+                {
+                    TakeDamage();
+                }
+            }
         }
         if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
         {
@@ -66,16 +60,6 @@ public class PlayerHealth : PlayerPart, IMediatorListener
                 if(playerNumber == repairMessage.id)
                 {
                     GetRepaired();
-                }
-            }
-        }
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
-        {
-            if (data is PlayerChargeReleaseData chargeData)
-            {
-                if (chargeData.releasedPower > powerDamageThreshold && chargeData.id == playerNumber)
-                {
-                    TakeDamage();
                 }
             }
         }

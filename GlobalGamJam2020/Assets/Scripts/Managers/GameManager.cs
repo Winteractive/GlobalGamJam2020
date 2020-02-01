@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
             AudioManager.Initialize();
             InputManager.Initialize();
             Restarter.Initialize();
+            Screenshaker.Initialize();
             DontDestroyOnLoad(gameObject);
         }
         //Time.timeScale = 0.5f;
@@ -46,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        GlobalMediator.SendMessage(GameEvents.GAME_STARTED);
     }
     private void Update()
     {
