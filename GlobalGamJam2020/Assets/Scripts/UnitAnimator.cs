@@ -88,7 +88,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
             {
                 currentFrame = 0;
             }
-            else 
+            else
             {
                 currentFrame--;
             }
@@ -152,7 +152,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     }
                     break;
                 case GameEvents.PLAYER_CHARGE_CANCELLED:
-                    
+
                     break;
                 case GameEvents.PLAYER_TAKE_DAMAGE:
                     break;
@@ -161,12 +161,12 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     {
                         if (player.id == playerNumber)
                         {
-                            if(currentAnimationName != "Squat" && currentAnimationName != "OnTop" && currentAnimationName != "ChargeUp" && currentAnimationName != "InAir")
+                            if (currentAnimationName == "Sleep")
                             {
                                 TryStartAnimation("Idle");
                                 SetFrameRate("Idle");
                             }
-                                
+
                         }
                     }
                     break;
@@ -201,10 +201,10 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     }
                     break;
                 case GameEvents.PLAYER_COLLIDE_WITH_PLAYER:
-                    
+
                     break;
                 case GameEvents.GAME_STARTED:
-                    
+
                     break;
                 default:
                     break;
