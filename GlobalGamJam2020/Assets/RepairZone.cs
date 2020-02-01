@@ -47,12 +47,12 @@ public class RepairZone : PlayerPart, IMediatorListener
                 {
                     if(tagMessage.triggerInside)
                     {
-                        playersInsideTrigger.Add(tagMessage.objectsInside.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Add(tagMessage.objectInside.GetComponent<Player>().playerNumber);
 
                     }
                     else
                     {
-                        playersInsideTrigger.Remove(tagMessage.objectsInside.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Remove(tagMessage.objectInside.GetComponent<Player>().playerNumber);
                     }
                 }
             }

@@ -12,7 +12,7 @@ public class TagCheck : PlayerPart
     {
         public int playerNumber;
         public bool triggerInside;
-        public GameObject objectsInside;
+        public GameObject objectInside;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +26,7 @@ public class TagCheck : PlayerPart
             {
                 playerNumber = playerNumber,
                 triggerInside = true,
-                objectsInside = collision.gameObject
+                objectInside = collision.gameObject,
             });
         }
     }
@@ -42,7 +42,7 @@ public class TagCheck : PlayerPart
                 {
                     playerNumber = playerNumber,
                     triggerInside = false,
-                    objectsInside = collision.gameObject
+                    objectInside = collision.gameObject
                 });
             }
             

@@ -24,6 +24,23 @@ public class Movement : PlayerPart, IMediatorListener
 
     private void UpdateMovement(Vector2 inputDirection)
     {
+        if ((inputDirection.x == 0 && isGrounded)) // should only apply on ground check
+        {
+            if (rb.velocity.x < -1)
+            {
+                rb.velocity += new Vector2(brakeValue * Time.deltaTime, 0);
+                //Debug.Log("breaking");
+            }
+            else if (rb.velocity.x > 1)
+            {
+                rb.velocity -= new Vector2(brakeValue * Time.deltaTime, 0);
+                //Debug.Log("breaking");
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+        }
         if (isCharging)
             return;
 
@@ -38,19 +55,7 @@ public class Movement : PlayerPart, IMediatorListener
         movementDirection = new Vector2(inputDirection.x, 0) * Time.deltaTime * speedMultiplier;
 
 
-        if (inputDirection.x == 0 && isGrounded) // should only apply on ground check
-        {
-            if (rb.velocity.x < -1)
-            {
-                rb.velocity += new Vector2(brakeValue * Time.deltaTime, 0);
-                //Debug.Log("breaking");
-            }
-            else if (rb.velocity.x > 1)
-            {
-                rb.velocity -= new Vector2(brakeValue * Time.deltaTime, 0);
-                //Debug.Log("breaking");
-            }
-        }
+
 
         rb.velocity += new Vector2(movementDirection.x, 0);
         if (rb.velocity.x > speedLimit)
