@@ -60,10 +60,10 @@ public static class GlobalMediator
         allListeners?.Invoke(gameEvent, data);
     }
 
-    public static void OnMediatorMessageReceived(GameEvents gameEvent, object data)
-    {
-        throw new NotImplementedException();
-    }
+    //public static void OnMediatorMessageReceived(GameEvents gameEvent, object data)
+    //{
+    //    throw new NotImplementedException();
+    //}
 }
 /// <summary>
 /// Events that the Mediator Uses
@@ -74,7 +74,10 @@ public enum GameEvents
     PLAYER_INPUT = 1 << 0,
     PLAYER_GROUND_CHECK = 1 << 1,
     PLAYER_CHARGING = 1 << 2,
+
+
     PLAYER_RELEASED_CHARGE = 1 << 3,
+    PLAYER_CANCELED_CHARGE = 1 << 4,
 }
 
 // walking + direction + id

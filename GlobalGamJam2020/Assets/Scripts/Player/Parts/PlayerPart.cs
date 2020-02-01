@@ -10,14 +10,6 @@ public abstract class PlayerPart : MonoBehaviour
     public virtual void Initialize(int playerNumber)
     {
         this.playerNumber = playerNumber;
-        CustomStart();
-    }
-    /// <summary>
-    /// Runs on Player's Start function. Use this instead of Unitys Start. 
-    /// </summary>
-    public virtual void CustomStart()
-    {
-
     }
 
 }
