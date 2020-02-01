@@ -42,15 +42,16 @@ public class HeartVisualizer : MonoBehaviour
         foreach (var item in p1Hearts)
         {
             item.sprite = filledHeart;
+            item.gameObject.transform.localScale = Vector3.zero;
         }
 
         foreach (var item in p2Hearts)
         {
             item.sprite = filledHeart;
+            item.gameObject.transform.localScale = Vector3.zero;
         }
 
-        StartCoroutine(ShowHearts(false, 1, 0f));
-        StartCoroutine(ShowHearts(false, 2, 0f));
+
     }
 
     public static SpriteRenderer GetFirstFullHeart(int playerID)
@@ -77,6 +78,7 @@ public class HeartVisualizer : MonoBehaviour
 
         foreach (var item in playerID == 1 ? p1Hearts : p2Hearts)
         {
+            LeanTween.cancel(item.gameObject);
             LeanTween.scale(item.gameObject, Vector3.one, 0.1f).setEaseInOutBack();
         }
 
@@ -89,32 +91,35 @@ public class HeartVisualizer : MonoBehaviour
         {
             LeanTween.cancel(heart.gameObject);
             heart.transform.localScale = Vector3.one;
-            LeanTween.scale(heart.gameObject, Vector2.one * 2.5f, 0.3f).setEasePunch();
             heart.sprite = emptyHeart;
+            LeanTween.scale(heart.gameObject, Vector2.one * 2.5f, 0.3f).setEasePunch();
+
         }
 
         yield return new WaitForSeconds(0.3f);
+        LeanTween.cancel(heart.gameObject);
+
+
 
         foreach (var item in playerID == 1 ? p1Hearts : p2Hearts)
         {
-            LeanTween.cancel(heart.gameObject);
-            heart.transform.localScale = Vector3.one;
+            LeanTween.cancel(item.gameObject);
+            item.transform.localScale = Vector3.one;
             LeanTween.scale(item.gameObject, Vector3.zero, 0.1f).setEaseInOutBack();
         }
+
+
     }
 
     public IEnumerator GetRepaired(int playerID)
     {
         foreach (var item in playerID == 1 ? p1Hearts : p2Hearts)
         {
+            LeanTween.cancel(item.gameObject);
             LeanTween.scale(item.gameObject, Vector3.one, 0.1f).setEaseInOutBack();
         }
 
         yield return new WaitForSeconds(0.1f);
-
-        SpriteRenderer heart = GetFirstFullHeart(playerID);
-
-
 
 
         foreach (var item in playerID == 1 ? p1Hearts : p2Hearts)
@@ -132,8 +137,8 @@ public class HeartVisualizer : MonoBehaviour
 
         foreach (var item in playerID == 1 ? p1Hearts : p2Hearts)
         {
-            LeanTween.cancel(heart.gameObject);
-            heart.transform.localScale = Vector3.one;
+            LeanTween.cancel(item.gameObject);
+            item.transform.localScale = Vector3.one;
             LeanTween.scale(item.gameObject, Vector3.zero, 0.1f).setEaseInOutBack();
         }
     }
