@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargePower: 0
   chargePowerIncrement: 10
-  maxChargePower: 50
+  maxChargePower: 20
   minChargePower: 10
 --- !u!50 &890171377
 Rigidbody2D:
@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 6896185232031255147}
   - component: {fileID: 1217168987876305750}
   - component: {fileID: 4582406587799938509}
+  - component: {fileID: 830016822745917496}
   m_Layer: 0
   m_Name: UnderSide
   m_TagString: Untagged
@@ -328,6 +329,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagToTriggerOn: Player
   eventsToTrigger: 512
+--- !u!114 &830016822745917496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4976728615974450795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7461f83392692b44f95e55e4470c9cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableEvents: 1024
+  enableEvents: 128
 --- !u!1 &8250680528445232625
 GameObject:
   m_ObjectHideFlags: 0

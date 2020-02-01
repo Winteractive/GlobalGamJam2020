@@ -11,7 +11,6 @@ public class Movement : PlayerPart, IMediatorListener
     [SerializeField]private bool isGrounded = false;
     private bool isCharging = false;
     private bool isBroken = false;
-    public float hoverForce = 3000;
     private Rigidbody2D rb;
 
 

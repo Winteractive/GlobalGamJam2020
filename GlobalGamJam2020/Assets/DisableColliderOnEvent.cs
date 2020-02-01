@@ -33,7 +33,7 @@ public class DisableColliderOnEvent : PlayerPart, IMediatorListener
             {
                 if (playerNumber == playerData.id)
                 {
-                    collider2d.enabled = false;
+                    collider2d.enabled = true;
                 }
             }
         }
