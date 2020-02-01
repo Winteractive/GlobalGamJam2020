@@ -6,22 +6,27 @@ public class TagCheck : PlayerPart
 {
     public string tagToTriggerOn;
     public GameEvents triggerEventsToTrigger;
-    int numberOfObjectsInside;
+    List<GameObject> objectsInside;
+
     public struct TagCheckMessage
     {
         public int playerNumber;
         public bool triggerInside;
+        public List<GameObject> objectsInside;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(tagToTriggerOn))
         {
-            numberOfObjectsInside++;
+            if(!objectsInside.Contains(collision.gameObject))
+                objectsInside.Add(collision.gameObject);
+
             GlobalMediator.SendMessage(triggerEventsToTrigger, new TagCheckMessage
             {
                 playerNumber = playerNumber,
-                triggerInside = true
+                triggerInside = true,
+                objectsInside = objectsInside
             });
         }
     }
@@ -29,8 +34,8 @@ public class TagCheck : PlayerPart
     {
         if (collision.CompareTag(tagToTriggerOn) && collision.transform != transform.parent)
         {
-            numberOfObjectsInside--;
-            if(numberOfObjectsInside == 0)
+            objectsInside.Remove(collision.gameObject);
+            if (objectsInside.Count == 0)
             {
                 GlobalMediator.SendMessage(triggerEventsToTrigger, new TagCheckMessage
                 {
