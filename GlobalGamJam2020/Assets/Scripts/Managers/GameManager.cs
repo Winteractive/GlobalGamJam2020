@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
             AudioManager.Initialize();
             InputManager.Initialize();
             Restarter.Initialize();
+            HeartVisualizer.Initialize();
             DontDestroyOnLoad(gameObject);
         }
         //Time.timeScale = 0.5f;
