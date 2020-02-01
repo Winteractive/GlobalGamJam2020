@@ -12,10 +12,11 @@ GameObject:
   - component: {fileID: 3248044616911460497}
   - component: {fileID: 406502371666657744}
   - component: {fileID: 890171372}
+  - component: {fileID: 2399480705214206772}
+  - component: {fileID: 2319794016118456010}
   - component: {fileID: 890171377}
   - component: {fileID: 890171376}
   - component: {fileID: 2932036538450026213}
-  - component: {fileID: 2319794016118456010}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -76,8 +77,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedMultiplier: 60
-  breakValue: 5
+  brakeValue: 100
   speedLimit: 6
+  hoverForce: 3000
+--- !u!114 &2399480705214206772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406502371666657746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3cde868e3fe5747bb312eed7f400d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currenthealth: 0
+  maxHealth: 3
+  powerDamageThreshold: 15
+--- !u!114 &2319794016118456010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406502371666657746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 620aec23bad64eb4d944167bf6b50ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargePower: 0
+  chargePowerIncrement: 10
+  maxChargePower: 50
+  minChargePower: 10
 --- !u!50 &890171377
 Rigidbody2D:
   serializedVersion: 4
@@ -174,22 +207,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &2319794016118456010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 406502371666657746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 620aec23bad64eb4d944167bf6b50ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chargePower: 0
-  chargePowerIncrement: 10
-  maxChargePower: 50
-  minChargePower: 10
 --- !u!1 &4976728615974450795
 GameObject:
   m_ObjectHideFlags: 0

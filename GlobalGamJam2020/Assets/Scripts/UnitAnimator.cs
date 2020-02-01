@@ -98,7 +98,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
         if (id != playerNumber) return;
 
 
-        if (events.HasFlag(GameEvents.PLAYER_CHARGING)) // Example
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START)) // Example
         {
             TryStartAnimation("ChargeUp");
             SetFrameRate("ChargeUp");
