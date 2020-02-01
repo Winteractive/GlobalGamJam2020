@@ -8,7 +8,7 @@ public class Movement : PlayerPart, IMediatorListener
     public float speedMultiplier = 10;
     public float brakeValue = 100;
     public float speedLimit = 100;
-    [SerializeField]private bool isGrounded = false;
+    public bool isGrounded = false;
     private bool isCharging = false;
     private bool isBroken = false;
     private Rigidbody2D rb;

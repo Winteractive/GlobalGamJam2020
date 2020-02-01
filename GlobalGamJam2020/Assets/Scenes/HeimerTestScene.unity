@@ -980,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3-Tile PlatformWGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7089738336449291328, guid: f931b9f23b8db41418b1b027cb769f62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2463007066595572334, guid: f931b9f23b8db41418b1b027cb769f62,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1055,6 +1060,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1-Tile PlatformWGrass
       objectReference: {fileID: 0}
+    - target: {fileID: 1593141068923241198, guid: f2b7071de8edaeb46806cc768c15d20b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8068210355868200659, guid: f2b7071de8edaeb46806cc768c15d20b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1129,6 +1139,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
@@ -1444,7 +1459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0.65, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1518,6 +1533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 4-Tile PlatformWGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402679395830722865, guid: a1bde04294e3230418bcb1bc95410ea1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8031372194434264863, guid: a1bde04294e3230418bcb1bc95410ea1,
         type: 3}
@@ -1749,6 +1769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1823,6 +1848,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 4-Tile PlatformWGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 3402679395830722865, guid: a1bde04294e3230418bcb1bc95410ea1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8031372194434264863, guid: a1bde04294e3230418bcb1bc95410ea1,
         type: 3}
@@ -1955,6 +1985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
@@ -2180,6 +2215,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2254,6 +2294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 1-Tile PlatformWGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593141068923241198, guid: f2b7071de8edaeb46806cc768c15d20b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 8068210355868200659, guid: f2b7071de8edaeb46806cc768c15d20b,
         type: 3}
@@ -2548,6 +2593,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2622,6 +2672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 3-Tile PlatformWGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089738336449291328, guid: f931b9f23b8db41418b1b027cb769f62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 2463007066595572334, guid: f931b9f23b8db41418b1b027cb769f62,
         type: 3}
@@ -2698,6 +2753,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1-Tile PlatformWGrass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1593141068923241198, guid: f2b7071de8edaeb46806cc768c15d20b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 8068210355868200659, guid: f2b7071de8edaeb46806cc768c15d20b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2772,6 +2832,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
@@ -2848,6 +2913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3-Tile PlatformWGrass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7089738336449291328, guid: f931b9f23b8db41418b1b027cb769f62,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2463007066595572334, guid: f931b9f23b8db41418b1b027cb769f62,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2922,6 +2992,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2-Tile PlatformWGrass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839543322600971191, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 238600756136638346, guid: d9db51ba6eb7a8b4391a3d67e1f365cb,
         type: 3}
