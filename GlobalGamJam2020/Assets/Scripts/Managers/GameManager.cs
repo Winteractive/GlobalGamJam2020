@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-
+        GlobalMediator.SendMessage(GameEvents.GAME_STARTED);
     }
     private void Update()
     {
