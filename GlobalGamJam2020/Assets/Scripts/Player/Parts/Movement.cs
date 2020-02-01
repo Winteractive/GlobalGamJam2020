@@ -9,21 +9,25 @@ public class Movement : PlayerPart, IMediatorListener
     public float breakValue = 100;
     public float speedLimit = 100;
     private bool isGrounded = false;
-    public float hoverForce = 3000;
+    private bool isCharging = false;
     private Rigidbody2D rb;
 
-    public override void CustomStart()
+
+    public override void Initialize(int playerNumber)
     {
+        base.Initialize(playerNumber);
         rb = GetComponent<Rigidbody2D>();
         GlobalMediator.AddListener(this);
     }
 
     private void UpdateMovement(Vector2 inputDirection)
     {
+        if (isCharging)
+            return;
+
         if (!isGrounded)
         {
             inputDirection = Vector2.zero;
-
         }
         movementDirection = new Vector2(inputDirection.x, 0) * Time.deltaTime * speedMultiplier;
 
@@ -77,6 +81,19 @@ public class Movement : PlayerPart, IMediatorListener
                 {
                     isGrounded = tagData.triggerInside;
                 }
+            }
+        }
+
+        if (events.HasFlag(GameEvents.PLAYER_CHARGING))
+        {
+            if (data is Charge.ChargeMessage chargeState)
+            {
+                if (chargeState.playerNumber == playerNumber)
+                {
+
+                    isCharging = chargeState.charging;
+                }
+
             }
         }
     }

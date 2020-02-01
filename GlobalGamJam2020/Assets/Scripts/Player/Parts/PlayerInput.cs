@@ -8,8 +8,9 @@ public class PlayerInput : PlayerPart
     InputSystemControls inputs;
     bool holdingCharge;
 
-    public override void CustomStart()
+    public override void Initialize(int playerNumber)
     {
+        base.Initialize(playerNumber);
         InputManager.SetPlayerNumberUpdateDevice(playerNumber, InputManager_OnChanges);
         InputManager_OnChanges();
         inputs.Player.Charge.started += Charge_started;
@@ -52,9 +53,7 @@ public class PlayerInput : PlayerPart
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log(holdingCharge);
-        
+    {        
         GlobalMediator.SendMessage(GameEvents.PLAYER_INPUT, new InputMessage
         {
             playerNumber = playerNumber,

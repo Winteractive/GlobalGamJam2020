@@ -100,7 +100,6 @@ public static class InputManager
     public static void EvaluateDevice(InputDevice device)
     {
         string deviceSplit = device.name.Substring(device.GetType().Name.Count());
-        Debug.Log(device.displayName);
         int playerNumber = 1;
         if (!string.IsNullOrWhiteSpace(deviceSplit))
         {
