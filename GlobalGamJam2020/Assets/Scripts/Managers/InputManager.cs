@@ -99,11 +99,12 @@ public static class InputManager
     /// <param name="device"></param>
     public static void EvaluateDevice(InputDevice device)
     {
-        string deviceSplit = device.name.Substring(device.displayName.Count());
-
+        string deviceSplit = device.name.Substring(device.GetType().Name.Count());
+        Debug.Log(device.displayName);
         int playerNumber = 1;
         if (!string.IsNullOrWhiteSpace(deviceSplit))
         {
+            Debug.Log(deviceSplit);
             playerNumber += int.Parse(deviceSplit);
         }
         //Debug.Log($" {device.name} - {device.displayName} => {deviceSplit} => {playerNumber} ");
