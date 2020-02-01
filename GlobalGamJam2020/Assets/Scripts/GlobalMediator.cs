@@ -12,7 +12,7 @@ public static class GlobalMediator
     //Why Event? Well we can't have static classes inherit a Interface
     static event Listener allListeners;
     //It is faster to use ForEach do to event uses a nullCe
-    
+
     /// <summary>
     /// Adds a objects that wants to listen to called events
     /// </summary>
@@ -68,13 +68,24 @@ public static class GlobalMediator
 /// <summary>
 /// Events that the Mediator Uses
 /// </summary>
-[Flags]public enum GameEvents
+[Flags]
+public enum GameEvents
 {
     PLAYER_INPUT = 1 << 0,
     PLAYER_GROUND_CHECK = 1 << 1,
     PLAYER_CHARGING = 1 << 2,
     PLAYER_RELEASED_CHARGE = 1 << 3,
 }
+
+// walking + direction + id
+// stopped walking + id
+// Started charging + id
+// Stopped charging + id
+// aborted charging + id
+// became grounded + id
+// someone standing on me + id
+// someone stopped standing on me + id
+
 
 public interface IMediatorListener
 {
