@@ -26,6 +26,10 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
 
     private void MountPlayer(GameObject bottomPlayer)
     {
+        if ((GetComponent<Rigidbody2D>().velocity.y > 0) || !bottomPlayer.GetComponent<Movement>().isGrounded)
+        {
+            return;
+        }
         Debug.Log("MOUNTING PLAYER");
         mountedPlayer = bottomPlayer.transform;
         transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
