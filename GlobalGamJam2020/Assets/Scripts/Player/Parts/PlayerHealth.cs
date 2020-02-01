@@ -35,7 +35,7 @@ public class PlayerHealth : PlayerPart, IMediatorListener
 
     private void GetRepaired()
     {
-        currenthealth++;
+        currenthealth += maxHealth;
         if (currenthealth > maxHealth)
             currenthealth = maxHealth;
     }
