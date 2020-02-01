@@ -88,7 +88,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
             {
                 currentFrame = 0;
             }
-            else // don't loop
+            else 
             {
                 currentFrame--;
             }
@@ -101,93 +101,110 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
-        if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
-        {
-            if (data is PlayerData player)
-            {
-                if (player.id == playerNumber)
-                {
-                    TryStartAnimation("Idle");
-                    SetFrameRate("Idle");
-                }
-            }
-        }
 
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START))
+        foreach (GameEvents item in Enum.GetValues(typeof(GameEvents)))
         {
-            if (data is PlayerData charge)
-            {
-                if (charge.id == playerNumber)
-                {
+            if (events.HasFlag(item) == false) continue;
 
-                    TryStartAnimation("ChargeUp");
-                    SetFrameRate("ChargeUp");
-
-                }
-            }
-        }
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
-        {
-            if (data is PlayerData charge)
+            switch (item)
             {
-                if (charge.id == playerNumber)
-                {
-                    TryStartAnimation("InAir");
-                    SetFrameRate("InAir");
-
-                }
-            }
-        }
-        if (events.HasFlag(GameEvents.PLAYER_SLEEP))
-        {
-            if (data is PlayerData breakPlayerNumber)
-            {
-                if (breakPlayerNumber.id == playerNumber)
-                {
-                    TryStartAnimation("Sleep");
-                    SetFrameRate("Sleep");
-                }
-            }
-        }
-        if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
-        {
-            if (data is GroundCheckData tagMessage)
-            {
-                if (tagMessage.id == playerNumber)
-                {
-                    if (tagMessage.isGrounded)
+                case GameEvents.PLAYER_INPUT:
+                    break;
+                case GameEvents.PLAYER_GROUND_CHECK:
+                    if (data is GroundCheckData tagMessage)
                     {
-                        if(currentAnimationName != "Sleep")
+                        if (tagMessage.id == playerNumber)
                         {
-                            TryStartAnimation("Idle");
+                            if (tagMessage.isGrounded)
+                            {
+                                if (currentAnimationName != "Sleep")
+                                {
+                                    TryStartAnimation("Idle");
+                                    SetFrameRate("Idle");
+                                }
+
+                            }
+                        }
+                    }
+                    break;
+                case GameEvents.PLAYER_CHARGE_START:
+                    if (data is PlayerData chargeStart)
+                    {
+                        if (chargeStart.id == playerNumber)
+                        {
+
+                            TryStartAnimation("ChargeUp");
+                            SetFrameRate("ChargeUp");
+
+                        }
+                    }
+
+                    break;
+                case GameEvents.PLAYER_CHARGE_RELEASED:
+                    if (data is PlayerData chargeRelesed)
+                    {
+                        if (chargeRelesed.id == playerNumber)
+                        {
+                            TryStartAnimation("InAir");
+                            SetFrameRate("InAir");
+
+                        }
+                    }
+                    break;
+                case GameEvents.PLAYER_CHARGE_CANCELLED:
+                    
+                    break;
+                case GameEvents.PLAYER_TAKE_DAMAGE:
+                    break;
+                case GameEvents.PLAYER_REPAIRED:
+                    if (data is PlayerData player)
+                    {
+                        if (player.id == playerNumber)
+                        {
+                            if(currentAnimationName != "Squat" && currentAnimationName != "OnTop" && currentAnimationName != "ChargeUp" && currentAnimationName != "InAir")
+                                TryStartAnimation("Idle");
                             SetFrameRate("Idle");
                         }
-                        
                     }
-                }
-            }
-        }
-        
-        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
-        {
-            if (data is PlayerData breakPlayerNumber)
-            {
-                if (breakPlayerNumber.id == playerNumber)
-                {
-                    TryStartAnimation("Squat");
-                    SetFrameRate("Squat");
-                }
-            }
-        }
-        if (events.HasFlag(GameEvents.PLAYER_IS_MOUNTING))
-        {
-            if (data is PlayerData breakPlayerNumber)
-            {
-                if (breakPlayerNumber.id == playerNumber)
-                {
-                    TryStartAnimation("OnTop");
-                    SetFrameRate("OnTop");
-                }
+                    break;
+                case GameEvents.PLAYER_IS_MOUNTING:
+                    if (data is PlayerData playerIsMountingdata)
+                    {
+                        if (playerIsMountingdata.id == playerNumber)
+                        {
+                            TryStartAnimation("OnTop");
+                            SetFrameRate("OnTop");
+                        }
+                    }
+                    break;
+                case GameEvents.PLAYER_SLEEP:
+                    if (data is PlayerData sleepData)
+                    {
+                        if (sleepData.id == playerNumber)
+                        {
+                            TryStartAnimation("Sleep");
+                            SetFrameRate("Sleep");
+                        }
+                    }
+                    break;
+                case GameEvents.PLAYER_GOT_MOUNTED:
+                    if (data is PlayerData playerGotMounted)
+                    {
+                        if (playerGotMounted.id == playerNumber)
+                        {
+                            TryStartAnimation("Squat");
+                            SetFrameRate("Squat");
+                        }
+                    }
+                    break;
+                case GameEvents.PLAYER_COLLIDE_WITH_PLAYER:
+                    
+                    break;
+                case GameEvents.GAME_STARTED:
+                    
+                    break;
+                default:
+                    break;
             }
         }
     }
