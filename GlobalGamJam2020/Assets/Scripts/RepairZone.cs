@@ -22,11 +22,9 @@ public class RepairZone : PlayerPart, IMediatorListener
             timer = 0;
             foreach (var playerToRepair in playersInsideTrigger)
             {
-                Debug.Log("Repair..");
                 if(playerToRepair.currenthealth < playerToRepair.maxHealth)
                 {
                     GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair.playerNumber});
-
                 }
             }
         }
@@ -41,7 +39,7 @@ public class RepairZone : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
-        if(events.HasFlag(GameEvents.PLAYER_REPAIRED))
+        if(events.HasFlag(GameEvents.PLAYER_REPAIR_TRIGGER_BOX))
         {
             if(data is PlayerTriggerBoxData tagMessage)
             {

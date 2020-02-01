@@ -85,6 +85,7 @@ public enum GameEvents
     PLAYER_SLEEP = 1 << 10,
     RESTART_LEVEL = 1 << 11,
     GAME_STARTED = 1 << 12,
+    PLAYER_REPAIR_TRIGGER_BOX = 1 << 13,
 }
 
 
