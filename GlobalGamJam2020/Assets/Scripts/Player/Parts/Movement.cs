@@ -111,6 +111,7 @@ public class Movement : PlayerPart, IMediatorListener
 
             }
         }
+
         if (events.HasFlag(GameEvents.PLAYER_SLEEP))
         {
             if (data is PlayerData breakPlayerNumber)
