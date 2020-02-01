@@ -72,6 +72,8 @@ public static class GlobalMediator
 {
     PLAYER_INPUT = 1 << 0,
     PLAYER_GROUND_CHECK = 1 << 1,
+    PLAYER_CHARGING = 1 << 2,
+    PLAYER_RELEASED_CHARGE = 1 << 3,
 }
 
 public interface IMediatorListener
