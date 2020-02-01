@@ -79,6 +79,8 @@ public enum GameEvents
     PLAYER_TAKE_DAMAGE = 1 << 5,
     PLAYER_BREAK = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
+    PLAYER_PLAYER_UNDER_ME = 1 << 8,
+    
 }
 
 // walking + direction + id
