@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlayerPart : MonoBehaviour
 {
-    public int playerNumber;
+    internal int playerNumber;
 
     //Runs from Player. And gets the playerNumber accosiaded with it
     public virtual void Initialize(int playerNumber)
