@@ -12,9 +12,10 @@ public class TagCheck : PlayerPart
         public int playerNumber;
         public bool triggerInside;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag(tagToTriggerOn))
+        if (collision.CompareTag(tagToTriggerOn))
         {
             GlobalMediator.SendMessage(triggerEventsToTrigger, new TagCheckMessage
             {

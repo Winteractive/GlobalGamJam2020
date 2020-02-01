@@ -768,44 +768,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 890171377, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171377, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171377, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: speedMultiplier
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: speedLimit
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: breakValue
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 890171372, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
-      propertyPath: hoverForce
-      value: 3000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2932036538450026213, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 1275cc830e389a849847dc2e7a5793b2, type: 2}
-    - target: {fileID: 3248044616911460497, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: playerNumber
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
 --- !u!1 &1452727704
