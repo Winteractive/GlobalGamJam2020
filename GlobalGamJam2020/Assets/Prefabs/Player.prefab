@@ -263,8 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2485278811456698015}
   - component: {fileID: 6896185232031255147}
-  - component: {fileID: 5578368378965023437}
-  - component: {fileID: 8393224824021774568}
+  - component: {fileID: 8457832088854436783}
   - component: {fileID: 7272621863871919486}
   m_Layer: 0
   m_Name: UnderSide
@@ -313,7 +312,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.1}
   m_EdgeRadius: 0
---- !u!114 &5578368378965023437
+--- !u!114 &8457832088854436783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,25 +321,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4976728615974450795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71146bd7fd8901b48bf9d4998f05f894, type: 3}
+  m_Script: {fileID: 11500000, guid: 31ca969e5fc50ba429b5051dec8c394f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tagToTriggerOn: Ground
-  triggerEventsToTrigger: 2
---- !u!114 &8393224824021774568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4976728615974450795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71146bd7fd8901b48bf9d4998f05f894, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagToTriggerOn: Player
-  triggerEventsToTrigger: 256
+  eventsToTrigger: 2
 --- !u!114 &7272621863871919486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8549978003884417877}
   - component: {fileID: 7584036835130688402}
-  - component: {fileID: 2085720781588181599}
+  - component: {fileID: 326780563111580968}
   - component: {fileID: 2064925315985685280}
   m_Layer: 0
   m_Name: GameObject
@@ -414,7 +399,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1992188, y: 1.1992188}
   m_EdgeRadius: 0
---- !u!114 &2085720781588181599
+--- !u!114 &326780563111580968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -423,11 +408,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8250680528445232625}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71146bd7fd8901b48bf9d4998f05f894, type: 3}
+  m_Script: {fileID: 11500000, guid: 31ca969e5fc50ba429b5051dec8c394f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tagToTriggerOn: Player
-  triggerEventsToTrigger: 128
+  eventsToTrigger: 128
 --- !u!114 &2064925315985685280
 MonoBehaviour:
   m_ObjectHideFlags: 0

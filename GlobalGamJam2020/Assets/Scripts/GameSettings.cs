@@ -8,8 +8,6 @@ public class GameSettings : ScriptableObject
     [Header("Service Locators")]
     public ServiceLocator.AnalyticsOptions ANALYTICS_SERVICE;
 
-    [Header("Audio")]
-    public ServiceLocator.AudioOptions AUDIO_SERVICE;
 
     public bool MASTER_MUTE;
     [Range(0,100)]

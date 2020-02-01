@@ -24,51 +24,54 @@ public class Charge : PlayerPart, IMediatorListener
         GlobalMediator.AddListener(this);
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
-        if (data is PlayerInput.InputMessage inputMessage)
+        if (data is PlayerInputData inputMessage)
         {
-            if (inputMessage.playerNumber != playerNumber) return;
+            if (inputMessage.id != playerNumber) return;
 
-            if (inputMessage.charge)
+            if (inputMessage.key_charge)
             {
                 if (alowedToCharge)
-                    Charging(inputMessage.leftStick);
+                    Charging(inputMessage.axis);
             }
             else
             {
                 if (isCharging)
                 {
-                    ReleaseCharge(inputMessage.leftStick);
+                    ReleaseCharge(inputMessage.axis);
                 }
 
             }
         }
         if(events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
-            if(data is TagCheck.TagCheckMessage tagMessage)
+            if(data is GroundCheckData groundCheckData)
             {
-                if(playerNumber == tagMessage.playerNumber)
+                if(playerNumber == groundCheckData.id)
                 {
-                    alowedToCharge = tagMessage.triggerInside;
-                    if (!tagMessage.triggerInside)
+                    alowedToCharge = groundCheckData.isGrounded;
+                    if (!groundCheckData.isGrounded)
                     {
                         Reset();
-                        SendChargeMessage(GameEvents.PLAYER_CHARGE_CANCELLED);
+                        GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_CANCELLED, new PlayerData
+                        {
+                            id = playerNumber,
+                        });
                     }
                 }
             }
         }
-        if (events.HasFlag(GameEvents.PLAYER_ON_PLAYER_CHECK))
-        {
-            if (data is TagCheck.TagCheckMessage tagMessage)
-            {
-                if (playerNumber == tagMessage.playerNumber)
-                {
-                    alowedToCharge = tagMessage.triggerInside;
-                }
-            }
-        }
+        //if (events.HasFlag(GameEvents.))
+        //{
+        //    if (data is TagCheck.TagCheckMessage tagMessage)
+        //    {
+        //        if (playerNumber == tagMessage.playerNumber)
+        //        {
+        //            alowedToCharge = tagMessage.triggerInside;
+        //        }
+        //    }
+        //}
     }
 
     public void Charging(Vector2 inputDirection)
@@ -76,7 +79,10 @@ public class Charge : PlayerPart, IMediatorListener
         if (!isCharging)
         {
             isCharging = true;
-            SendChargeMessage(GameEvents.PLAYER_CHARGE_START);
+            GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_START, new PlayerData
+            {
+                id = playerNumber,
+            });
         }
 
         chargePower += chargePowerIncrement * Time.deltaTime;
@@ -103,13 +109,20 @@ public class Charge : PlayerPart, IMediatorListener
         if (Vector2.Dot(Vector2.up, inputDirection.normalized) < 0)
         {
             Reset();
-            SendChargeMessage(GameEvents.PLAYER_CHARGE_CANCELLED);
+            GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_CANCELLED, new PlayerData
+            {
+                id = playerNumber,
+            });
             return;
         }
 
         rigi.AddForce(aimDirection * chargePower, ForceMode2D.Impulse);
 
-        SendChargeMessage(GameEvents.PLAYER_CHARGE_RELEASED);
+        GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_CANCELLED, new PlayerChargeReleaseData
+        {
+            id = playerNumber,
+            releasedPower = chargePower
+        });
         Reset();
     }
     public void Reset()
@@ -118,16 +131,6 @@ public class Charge : PlayerPart, IMediatorListener
         chargePower = minChargePower;
     }
 
-    public void SendChargeMessage(GameEvents gameEvents)
-    {
-        GlobalMediator.SendMessage(gameEvents, new ChargeMessage
-        {
-            playerNumber = playerNumber,
-            charging = isCharging,
-            power = chargePower
-        });
-
-    }
     public struct ChargeMessage
     {
         public int playerNumber;

@@ -39,25 +39,25 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
         isRiding = false;
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
-        if (events.HasFlag(GameEvents.PLAYER_ON_PLAYER_CHECK))
+        if (events.HasFlag(GameEvents.PLAYER_IS_MOUNTING))
         {
             Debug.Log("PlayerOnPLayer");
-            if (data is TagCheck.TagCheckMessage tagData)
+            if (data is PlayerTriggerBoxData tagData)
             {
-                Debug.Log("PlayerOnPLayer: " + tagData.triggerInside);
-                if (tagData.playerNumber == playerNumber && tagData.triggerInside)
+                Debug.Log("PlayerOnPLayer: " + tagData.enterExit);
+                if (tagData.id == playerNumber && tagData.enterExit)
                 {
-                    MountPlayer(tagData.objectInside);
+                    MountPlayer(tagData.collidingObject);
                 }
             }
         }
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
         {
-            if (data is Charge.ChargeMessage chargedata)
+            if (data is PlayerChargeReleaseData chargedata)
             {
-                if (chargedata.playerNumber == playerNumber)
+                if (chargedata.id == playerNumber)
                 {
                     DismountPlayer();
                 }

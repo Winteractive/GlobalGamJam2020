@@ -30,6 +30,7 @@ public static class AudioManager
                     AkSoundEngine.SetRTPCValue(player + "volume", Mathf.Abs(inputData.axis.x));
                     break;
                 case GameEvents.PLAYER_GROUND_CHECK:
+
                     GroundCheckData check = (GroundCheckData)data;
                     if (check.isGrounded)
                     {
@@ -77,13 +78,13 @@ public static class AudioManager
                     break;
                 case GameEvents.PLAYER_REPAIRED:
                     break;
+                case GameEvents.PLAYER_IS_MOUNTING:
+                    break;
                 case GameEvents.PLAYER_SLEEP:
                     AkSoundEngine.PostEvent("player_sleep", targetObject);
                     break;
                 case GameEvents.PLAYER_GOT_MOUNTED:
                     AkSoundEngine.PostEvent("player_mounted", targetObject);
-                    break;
-                case GameEvents.PLAYER_IS_MOUNTING:
                     break;
                 case GameEvents.PLAYER_COLLIDE_WITH_PLAYER:
                     AkSoundEngine.PostEvent("players_collide", targetObject);

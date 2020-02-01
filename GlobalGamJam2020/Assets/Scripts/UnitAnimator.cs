@@ -99,27 +99,26 @@ public class UnitAnimator : PlayerPart, IMediatorListener
         Invoke("NextFrame", 1f / (float)currentInfo.FPS);
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_START))
         {
-            if (data is Charge.ChargeMessage charge)
+            if (data is PlayerData charge)
             {
-                if (charge.playerNumber == playerNumber)
+                if (charge.id == playerNumber)
                 {
-                    if (charge.charging)
-                    {
-                        TryStartAnimation("ChargeUp");
-                        SetFrameRate("ChargeUp");
-                    }
+
+                    TryStartAnimation("ChargeUp");
+                    SetFrameRate("ChargeUp");
+
                 }
             }
         }
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
         {
-            if (data is Charge.ChargeMessage charge)
+            if (data is PlayerData charge)
             {
-                if (charge.playerNumber == playerNumber)
+                if (charge.id == playerNumber)
                 {
                     TryStartAnimation("InAir");
                     SetFrameRate("InAir");
@@ -129,11 +128,11 @@ public class UnitAnimator : PlayerPart, IMediatorListener
         }
         if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
-            if (data is TagCheck.TagCheckMessage tagMessage)
+            if (data is GroundCheckData tagMessage)
             {
-                if (tagMessage.playerNumber == playerNumber)
+                if (tagMessage.id == playerNumber)
                 {
-                    if (tagMessage.triggerInside)
+                    if (tagMessage.isGrounded)
                     {
                         TryStartAnimation("Idle");
                         SetFrameRate("Idle");
@@ -141,11 +140,11 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 }
             }
         }
-        if (events.HasFlag(GameEvents.PLAYER_BREAK))
+        if (events.HasFlag(GameEvents.PLAYER_SLEEP))
         {
-            if (data is int breakPlayerNumber)
+            if (data is PlayerData breakPlayerNumber)
             {
-                if (breakPlayerNumber == playerNumber)
+                if (breakPlayerNumber.id == playerNumber)
                 {
                     TryStartAnimation("Sleep");
                     SetFrameRate("Sleep");

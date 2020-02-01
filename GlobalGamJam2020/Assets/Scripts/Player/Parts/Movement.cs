@@ -73,43 +73,60 @@ public class Movement : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, object data)
     {
+        
+    }
+
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
+    {
         if (events.HasFlag(GameEvents.PLAYER_INPUT))
         {
-            if (data is PlayerInput.InputMessage inputData)
+            if (data is PlayerInputData inputData)
             {
-                if (inputData.playerNumber == playerNumber)
+                if (inputData.id == playerNumber)
                 {
-                    UpdateMovement(inputData.leftStick);
+                    UpdateMovement(inputData.axis);
                 }
             }
         }
         if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
-            if (data is TagCheck.TagCheckMessage tagData)
+            if (data is GroundCheckData tagData)
             {
-                if (tagData.playerNumber == playerNumber)
+                if (tagData.id == playerNumber)
                 {
-                    isGrounded = tagData.triggerInside;
+                    isGrounded = tagData.isGrounded;
                 }
             }
         }
 
-        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START ) || events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED) )
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_START))
         {
-            if (data is Charge.ChargeMessage chargeState)
+            if (data is PlayerData chargeState)
             {
-                if (chargeState.playerNumber == playerNumber)
+                if (chargeState.id == playerNumber)
                 {
-                    isCharging = chargeState.charging;
+                    isCharging = true;
+                }
+
+            }
+            
+        }
+        if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
+        {
+            if (data is PlayerData chargeState)
+            {
+                if (chargeState.id == playerNumber)
+                {
+                    isCharging = false;
                 }
 
             }
         }
-        if (events.HasFlag(GameEvents.PLAYER_BREAK))
+        if (events.HasFlag(GameEvents.PLAYER_SLEEP))
         {
-            if (data is int breakPlayerNumber)
+            if (data is PlayerData breakPlayerNumber)
             {
-                if (breakPlayerNumber == playerNumber)
+                if (breakPlayerNumber.id == playerNumber)
                 {
                     isBroken = true;
                 }
@@ -121,5 +138,4 @@ public class Movement : PlayerPart, IMediatorListener
             isBroken = false;
         }
     }
-
 }

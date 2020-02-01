@@ -16,7 +16,7 @@ using UnityEngine.SceneManagement;
 /// Manages all the managers
 /// </summary>
 [DisallowMultipleComponent()]
-public class GameManager : MonoBehaviour, IMediatorListener
+public class GameManager : MonoBehaviour
 {
 
     public static GameManager INSTANCE;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour, IMediatorListener
         else
         {
             INSTANCE = this;
-            GlobalMediator.AddListener(this);
+            
             RumbleManager.Initialize();
             ServiceLocator.Initialize();
             AudioManager.Initialize();
@@ -41,10 +41,6 @@ public class GameManager : MonoBehaviour, IMediatorListener
         }
         //Time.timeScale = 0.5f;
         //Time.fixedDeltaTime = Time.timeScale * 0.02f;
-    }
-    private void OnDestroy()
-    {
-        GlobalMediator.RemoveListener(this);
     }
 
     private void Start()
@@ -58,19 +54,19 @@ public class GameManager : MonoBehaviour, IMediatorListener
     public void UpdateVolumes()
     {
 
-#if UNITY_EDITOR
-        //Makes so the Mute Audio button in unity window mutes sound
-        settings.MASTER_MUTE = UnityEditor.EditorUtility.audioMasterMute;
-#endif
-        if (settings.MASTER_MUTE)
-        {
-            ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, 0);
-            return;
-        }
-        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, settings.MASTER_VOLUME);
-        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MUSIC, settings.MUSIC_VOLUME);
-        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.SFX, settings.SFX_VOLUME);
-        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.VOICE, settings.VOX_VOLUME);
+//#if UNITY_EDITOR
+//        //Makes so the Mute Audio button in unity window mutes sound
+//        settings.MASTER_MUTE = UnityEditor.EditorUtility.audioMasterMute;
+//#endif
+//        if (settings.MASTER_MUTE)
+//        {
+//            ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, 0);
+//            return;
+//        }
+//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, settings.MASTER_VOLUME);
+//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MUSIC, settings.MUSIC_VOLUME);
+//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.SFX, settings.SFX_VOLUME);
+//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.VOICE, settings.VOX_VOLUME);
     }
 
     private void OnApplicationQuit()
@@ -78,8 +74,4 @@ public class GameManager : MonoBehaviour, IMediatorListener
         RumbleManager.PauseAllControllers();
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
-    {
-
-    }
 }
