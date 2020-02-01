@@ -5,7 +5,19 @@ using UnityEngine;
 public class RidePlayerLock : PlayerPart, IMediatorListener
 {
     public bool isRiding = false;
+    private Transform mountedPlayer;
+    public float yOffset = 0.8f;
 
+    private void Update()
+    {
+        if (isRiding)
+        {
+            if (mountedPlayer)
+            {
+                transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
+            }
+        }
+    }
     public override void Initialize(int playerNumber)
     {
         base.Initialize(playerNumber);
@@ -14,13 +26,16 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
 
     private void MountPlayer(GameObject bottomPlayer)
     {
-        transform.SetParent(bottomPlayer.transform);
+        Debug.Log("MOUNTING PLAYER");
+        mountedPlayer = bottomPlayer.transform;
+        transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
         isRiding = true;
     }
 
     private void DismountPlayer()
     {
-        transform.SetParent(null);
+        Debug.Log("DISMOUNTING PLAYER");
+        mountedPlayer = null;
         isRiding = false;
     }
 
@@ -28,11 +43,13 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
     {
         if (events.HasFlag(GameEvents.PLAYER_ON_PLAYER_CHECK))
         {
+            Debug.Log("PlayerOnPLayer");
             if (data is TagCheck.TagCheckMessage tagData)
             {
+                Debug.Log("PlayerOnPLayer: " + tagData.triggerInside);
                 if (tagData.playerNumber == playerNumber && tagData.triggerInside)
                 {
-                    //MountPlayer(tagData.objectInside);
+                    MountPlayer(tagData.objectInside);
                 }
             }
         }
@@ -42,7 +59,7 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
             {
                 if (chargedata.playerNumber == playerNumber)
                 {
-                    //DismountPlayer();
+                    DismountPlayer();
                 }
             }
         }

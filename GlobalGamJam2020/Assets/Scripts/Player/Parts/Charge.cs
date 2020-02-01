@@ -59,6 +59,16 @@ public class Charge : PlayerPart, IMediatorListener
                 }
             }
         }
+        if (events.HasFlag(GameEvents.PLAYER_ON_PLAYER_CHECK))
+        {
+            if (data is TagCheck.TagCheckMessage tagMessage)
+            {
+                if (playerNumber == tagMessage.playerNumber)
+                {
+                    alowedToCharge = tagMessage.triggerInside;
+                }
+            }
+        }
     }
 
     public void Charging(Vector2 inputDirection)
