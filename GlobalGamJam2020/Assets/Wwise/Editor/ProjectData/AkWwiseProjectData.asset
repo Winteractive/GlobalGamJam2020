@@ -17,21 +17,21 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: facb8e2fab20674cb292d14790c46872
     GuidInternal: 
-    m_lastTime: -8586211317580155011
+    m_lastTime: -8586211250537691305
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 1086ef339671a04e96b181ef542103e2
     GuidInternal: 
-    m_lastTime: -8586211317580274693
+    m_lastTime: -8586211250537761124
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 74ac27596dedd54c8afa7249eadb96d7
     GuidInternal: 
-    m_lastTime: -8586211267058441351
+    m_lastTime: -8586210229670852070
     List:
     - name: cloudBank
       guid: 29b26effce254f4fb33195a1bf17617c
@@ -47,8 +47,230 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 7eba7e574eeb6f469ffeae9a2028e78d
     GuidInternal: 
-    m_lastTime: -8586211267058471271
+    m_lastTime: -8586210229671151271
     List:
+    - name: bgm_start
+      guid: 42542ccbc4ea2640a3baaeb61cba6717
+      id: 2985635692
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: bgm_start
+        ObjectType: 3
+      Path: Default Work Unit\Music\bgm_start
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: blue_release_charge
+      guid: f81573d0db7a234981657deaba425065
+      id: 2420368622
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: blue_release_charge
+        ObjectType: 3
+      Path: Default Work Unit\Music\blue_release_charge
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: blue_start_charge
+      guid: a2c83c2531ae6a4e9825a290d7fd0270
+      id: 4065460003
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: blue_start_charge
+        ObjectType: 3
+      Path: Default Work Unit\Music\blue_start_charge
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: bofa_0
+      guid: 9cceceb6f4b2d04798aa59fa2b5c768f
+      id: 1639892490
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: bofa_0
+        ObjectType: 3
+      Path: Default Work Unit\test\bofa_0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: bofa_1
+      guid: bb6d622ec8ae6846b06f907aa767f051
+      id: 1639892491
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: bofa_1
+        ObjectType: 3
+      Path: Default Work Unit\test\bofa_1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: pink_release_charge
+      guid: 96b031c7f581f84ba71fa21760a16310
+      id: 1282430586
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: pink_release_charge
+        ObjectType: 3
+      Path: Default Work Unit\Music\pink_release_charge
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: pink_start_charge
+      guid: e2c3967f6d69ae479192ce510f0f3425
+      id: 1084135343
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: pink_start_charge
+        ObjectType: 3
+      Path: Default Work Unit\Music\pink_start_charge
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: player_grounded
+      guid: 17d8b5a164563a4b9d2e42fe33cee48f
+      id: 4236329311
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: player_grounded
+        ObjectType: 3
+      Path: Default Work Unit\sfx\player_grounded
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: player_mounted
+      guid: ef6f3431bb9c4549afbd24e8717bc4c0
+      id: 1751218143
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: player_mounted
+        ObjectType: 3
+      Path: Default Work Unit\sfx\player_mounted
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: player_sleep
+      guid: 2130bf9095b30b479c130be7701db382
+      id: 2590882482
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: player_sleep
+        ObjectType: 3
+      Path: Default Work Unit\sfx\player_sleep
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: players_collide
+      guid: dfab7f71d910e942b12c8935b82d96d8
+      id: 1321591602
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: players_collide
+        ObjectType: 3
+      Path: Default Work Unit\sfx\players_collide
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: set_blue_volume_to_0
+      guid: 1bdd4ff356aecc44b716cd3ad147a5b7
+      id: 2093275268
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: set_blue_volume_to_0
+        ObjectType: 3
+      Path: Default Work Unit\test\set_blue_volume_to_0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: set_blue_volume_to_1
+      guid: 0ac5aaeb2d98e54c8a08e9962a7dbb03
+      id: 2093275269
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: set_blue_volume_to_1
+        ObjectType: 3
+      Path: Default Work Unit\test\set_blue_volume_to_1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: set_pink_volume_to_0
+      guid: c41118ff056033448ae5bf9818ca2a08
+      id: 1279113544
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: set_pink_volume_to_0
+        ObjectType: 3
+      Path: Default Work Unit\test\set_pink_volume_to_0
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: set_pink_volume_to_1
+      guid: 5fd419bee2221642849e6269ef0ec929
+      id: 1279113545
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: test
+        ObjectType: 4
+      - ElementName: set_pink_volume_to_1
+        ObjectType: 3
+      Path: Default Work Unit\test\set_pink_volume_to_1
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: stop_all
+      guid: 2d6ec4804ffa114498cb747f196ed3d9
+      id: 452547817
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: stop_all
+        ObjectType: 3
+      Path: Default Work Unit\stop_all
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: test_play
       guid: ef21f9525dddfa4da6e72a9d4c93c1a4
       id: 25579138
@@ -59,8 +281,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\test_play
       maxAttenuation: 0
-      maxDuration: 1.018417
-      minDuration: 1.018417
+      maxDuration: -1
+      minDuration: -1
     - name: test_play2
       guid: 9659ed3c8809a448ac77227089465194
       id: 3899496084
@@ -71,37 +293,138 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\test_play2
       maxAttenuation: 0
-      maxDuration: 1.018417
-      minDuration: 1.018417
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 3875d303fb4468479077622945cbb778
     GuidInternal: 
-    m_lastTime: -8586211317580364451
-    List: []
+    m_lastTime: -8586210229671141299
+    List:
+    - name: blue_charge
+      guid: f6b5f05f987e754d8823d637ef4080ea
+      id: 585247752
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: blue_charge
+        ObjectType: 13
+      Path: Default Work Unit\blue_charge
+    - name: blue_volume
+      guid: eb518d074acdce43a37e259eb4a57c9c
+      id: 3254037386
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: blue_volume
+        ObjectType: 13
+      Path: Default Work Unit\blue_volume
+    - name: pink_charge
+      guid: 34833f59590b0642b9ba6f0910591ac0
+      id: 1587205068
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: pink_charge
+        ObjectType: 13
+      Path: Default Work Unit\pink_charge
+    - name: pink_volume
+      guid: f6b4c6b46db12e40b03f4f29df8bae88
+      id: 706721998
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: pink_volume
+        ObjectType: 13
+      Path: Default Work Unit\pink_volume
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 9a86f14372c8c64a9db47fc0aab7c7d8
     GuidInternal: 
-    m_lastTime: -8586211317580194898
-    List: []
+    m_lastTime: -8586210274626168836
+    List:
+    - name: music
+      guid: ffb06a695e67b740989af0680e6a3e5f
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: music
+        ObjectType: 9
+      Path: Default Work Unit\music
+      values:
+      - name: charging
+        guid: 9adc5946187d4e4db4e85b3d09fa2ec6
+        id: 3828622232
+        PathAndIcons:
+        - ElementName: charging
+          ObjectType: 8
+      - name: idle
+        guid: b2e90261de00d34895f1acc40eb18572
+        id: 1874288895
+        PathAndIcons:
+        - ElementName: idle
+          ObjectType: 8
+      - name: None
+        guid: 1384ef205f52a6409b1abbfdfe3a9798
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: player
+      guid: badca2b27a79044c9fc9de2a5f284b48
+      id: 1069431850
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: player
+        ObjectType: 9
+      Path: Default Work Unit\player
+      values:
+      - name: None
+        guid: 6a218294aaaa0348bcc7def85ed764f8
+        id: 748895195
+        PathAndIcons:
+        - ElementName: None
+          ObjectType: 8
+      - name: p1
+        guid: 9594051fdabb8a4a839c583c42c0c6fb
+        id: 1635194252
+        PathAndIcons:
+        - ElementName: p1
+          ObjectType: 8
+      - name: p2
+        guid: 8c47477b54082f4eb05ca049f1c5f66e
+        id: 1635194255
+        PathAndIcons:
+        - ElementName: p2
+          ObjectType: 8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 7fdf84f03004c846a7e732736c192e00
     GuidInternal: 
-    m_lastTime: -8586211317580174956
+    m_lastTime: -8586211250537691305
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 709c75eba9c0a747acd8bae7c223f318
     GuidInternal: 
-    m_lastTime: -8586211317580155011
+    m_lastTime: -8586211250537691305
     List: []
   ExpandedItems:
   - /GlobalGameJam2020
+  - /GlobalGameJam2020/Events
+  - /GlobalGameJam2020/Events/Default Work Unit
+  - /GlobalGameJam2020/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

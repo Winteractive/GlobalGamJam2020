@@ -30,6 +30,16 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
         {
             return;
         }
+        //Debug.DrawRay(transform.position, bottomPlayer.transform.position + new Vector3(0, yOffset, 0) - transform.position, Color.red, 0.5f);
+        //RaycastHit2D hitData = Physics2D.CircleCast(transform.position, 0.05f, bottomPlayer.transform.position + new Vector3(0, yOffset, 0) - transform.position, LayerMask.GetMask("Ground"));
+        //Debug.Log("hit " + hitData.collider.name);
+        //Debug.Log(hitData);
+        //if (false)
+        //{
+        //    Debug.Log("RAYCAST HIT SOMETHING I THINK");
+        //    return;
+        //}
+
         Debug.Log("MOUNTING PLAYER");
         mountedPlayer = bottomPlayer.transform;
         transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
