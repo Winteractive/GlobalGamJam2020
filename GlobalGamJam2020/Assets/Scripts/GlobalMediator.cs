@@ -83,7 +83,7 @@ public enum GameEvents
     PLAYER_GOT_MOUNTED = 1 << 8,
     PLAYER_IS_MOUNTING = 1 << 9,
     PLAYER_SLEEP = 1 << 10,
-
+    RESTART_LEVEL = 1 << 11,
 }
 
 

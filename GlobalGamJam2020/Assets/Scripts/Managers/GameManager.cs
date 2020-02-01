@@ -32,11 +32,12 @@ public class GameManager : MonoBehaviour
         else
         {
             INSTANCE = this;
-            
+
             RumbleManager.Initialize();
             ServiceLocator.Initialize();
             AudioManager.Initialize();
             InputManager.Initialize();
+            Restarter.Initialize();
             DontDestroyOnLoad(gameObject);
         }
         //Time.timeScale = 0.5f;
@@ -54,19 +55,19 @@ public class GameManager : MonoBehaviour
     public void UpdateVolumes()
     {
 
-//#if UNITY_EDITOR
-//        //Makes so the Mute Audio button in unity window mutes sound
-//        settings.MASTER_MUTE = UnityEditor.EditorUtility.audioMasterMute;
-//#endif
-//        if (settings.MASTER_MUTE)
-//        {
-//            ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, 0);
-//            return;
-//        }
-//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, settings.MASTER_VOLUME);
-//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MUSIC, settings.MUSIC_VOLUME);
-//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.SFX, settings.SFX_VOLUME);
-//        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.VOICE, settings.VOX_VOLUME);
+        //#if UNITY_EDITOR
+        //        //Makes so the Mute Audio button in unity window mutes sound
+        //        settings.MASTER_MUTE = UnityEditor.EditorUtility.audioMasterMute;
+        //#endif
+        //        if (settings.MASTER_MUTE)
+        //        {
+        //            ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, 0);
+        //            return;
+        //        }
+        //        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, settings.MASTER_VOLUME);
+        //        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MUSIC, settings.MUSIC_VOLUME);
+        //        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.SFX, settings.SFX_VOLUME);
+        //        ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.VOICE, settings.VOX_VOLUME);
     }
 
     private void OnApplicationQuit()
