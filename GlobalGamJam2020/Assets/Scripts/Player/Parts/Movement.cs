@@ -24,7 +24,7 @@ public class Movement : PlayerPart, IMediatorListener
 
     private void UpdateMovement(Vector2 inputDirection)
     {
-        if ((inputDirection.x == 0 && isGrounded)) // should only apply on ground check
+        if (inputDirection.x == 0 && isGrounded) // should only apply on ground check
         {
             if (rb.velocity.x < -1)
             {
