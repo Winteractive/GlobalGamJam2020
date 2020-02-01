@@ -10,7 +10,6 @@ public static class AudioManager
     public static void Initialize()
     {
         GlobalMediator.AddListener(PlaySoundEvent);
-
         targetObject = new GameObject("@Wwise Audio Target");
         AkSoundEngine.PostEvent("bgm_start", targetObject);
 
@@ -30,7 +29,6 @@ public static class AudioManager
                     AkSoundEngine.SetRTPCValue(player + "volume", Mathf.Abs(inputData.axis.x));
                     break;
                 case GameEvents.PLAYER_GROUND_CHECK:
-
                     GroundCheckData check = (GroundCheckData)data;
                     if (check.isGrounded)
                     {

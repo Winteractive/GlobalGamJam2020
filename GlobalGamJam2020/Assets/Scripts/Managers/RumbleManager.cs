@@ -21,9 +21,51 @@ public static class RumbleManager
     {
         GlobalMediator.AddListener(OnMediatorMessage);
     }
-    public static void OnMediatorMessage(GameEvents events, object data)
+    public static void OnMediatorMessage(GameEvents events, GeneralData data)
     {
-       
+        foreach (GameEvents item in Enum.GetValues(typeof(GameEvents)))
+        {
+            if (events.HasFlag(item) == false) continue;
+
+            switch (item)
+            {
+                case GameEvents.PLAYER_INPUT:
+                    break;
+                case GameEvents.PLAYER_GROUND_CHECK:
+                    GroundCheckData gData = (GroundCheckData)data;
+                    RumbleController(gData.id, 0.2f, 0.3f);
+                    break;
+                case GameEvents.PLAYER_CHARGE_START:
+                    PlayerData pData = (PlayerData)data;
+                    RumbleController(pData.id, 0.15f, 0.2f);
+                    break;
+                case GameEvents.PLAYER_CHARGE_RELEASED:
+                    pData = (PlayerData)data;
+                    RumbleController(pData.id, 0.2f, 0.33f);
+                    break;
+                case GameEvents.PLAYER_CHARGE_CANCELLED:
+                    pData = (PlayerData)data;
+                    RumbleController(pData.id, 0.2f, 0.125f);
+                    break;
+                case GameEvents.PLAYER_TAKE_DAMAGE:
+                    break;
+                case GameEvents.PLAYER_COLLIDE_WITH_PLAYER:
+                    RumbleAllControllers(0.2f, 0.6f);
+                    break;
+                case GameEvents.PLAYER_REPAIRED:
+                    break;
+                case GameEvents.PLAYER_GOT_MOUNTED:
+                    pData = (PlayerData)data;
+                    RumbleController(pData.id,0.2f, 0.4f);
+                    break;
+                case GameEvents.PLAYER_IS_MOUNTING:
+                    pData = (PlayerData)data;
+                    RumbleController(pData.id, 0.15f, 0.2f);
+                    break;
+                case GameEvents.PLAYER_SLEEP:
+                    break;
+            }
+        }
     }
 
     public static void AddGamepadToPlayer(int playerNumber, Gamepad gamepad)
@@ -113,7 +155,7 @@ public static class RumbleManager
                 // Then it keep rumbling until the new rumble effect should be completed
 
                 item.Value.timer -= Time.unscaledDeltaTime; // Counts in realTime
-     
+
                 if (item.Value.timer < 0)
                 {
                     //Pause a rumble effect for the player
@@ -197,7 +239,7 @@ public static class RumbleManager
     {
         foreach (var item in playerToGampad)
         {
-                RumbleController(item.Key, duration, bothStrength);
+            RumbleController(item.Key, duration, bothStrength);
         }
     }
 }
