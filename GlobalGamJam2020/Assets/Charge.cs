@@ -120,7 +120,7 @@ public class Charge : PlayerPart, IMediatorListener
     {
         if (isCharging)
         {
-            Gizmos.DrawRay(transform.position, aimDirection);
+            Gizmos.DrawRay(transform.position, aimDirection * chargePower/10);
         }
     }
 }

@@ -16,7 +16,7 @@ using UnityEngine;
 /// </summary>
 public static class InputManager
 {
-    public static int numberOfPlayers = 2;
+    public static int numberOfPlayers = 3;
     public delegate void UpdateActionMaps();
     public static bool initialized = false;
     public static Dictionary<int, List<InputDevice>> playerIdToDevices = new Dictionary<int, List<InputDevice>>();
