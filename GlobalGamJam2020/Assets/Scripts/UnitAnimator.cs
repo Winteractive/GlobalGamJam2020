@@ -84,8 +84,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
             }
             currentFrame = 0;
         }
-        Debug.Log(currentFrame);
-        Debug.Log("amount: " + currentAnimation.Length);
+
         spriteRenderer.sprite = currentAnimation[currentFrame] ?? null;
 
         Invoke("NextFrame", 1f / (float)currentInfo.FPS);
