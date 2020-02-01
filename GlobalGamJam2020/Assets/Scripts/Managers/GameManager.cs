@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour, IMediatorListener
             GlobalMediator.AddListener(this);
             RumbleManager.Initialize();
             ServiceLocator.Initialize();
+            AudioManager.Initialize();
             InputManager.Initialize();
             DontDestroyOnLoad(gameObject);
         }
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour, IMediatorListener
 
     private void Start()
     {
-       
+
     }
     private void Update()
     {
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour, IMediatorListener
         //Makes so the Mute Audio button in unity window mutes sound
         settings.MASTER_MUTE = UnityEditor.EditorUtility.audioMasterMute;
 #endif
-        if(settings.MASTER_MUTE)
+        if (settings.MASTER_MUTE)
         {
             ServiceLocator.GetService<IAudioService>().SetVolume(MixerName.MASTER, 0);
             return;

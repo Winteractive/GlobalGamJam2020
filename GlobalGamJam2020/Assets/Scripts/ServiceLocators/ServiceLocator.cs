@@ -12,13 +12,8 @@ using UnityEngine;
 
 public static class ServiceLocator
 {
-    
-    public enum AudioOptions
-    {
-        Null,
-        Debug,
-        Wwise
-    }
+
+
     public enum AnalyticsOptions
     {
         Null,
@@ -28,14 +23,12 @@ public static class ServiceLocator
     }
 
 
-  
-    private static IAudioService audioService;
+
     private static IAnalyticsService analyticsService;
-    
+
     public static void Initialize()
     {
 
-        audioService = new NullAudioService();
         analyticsService = new NullAnalyticsProvider();
 
     }
@@ -46,15 +39,19 @@ public static class ServiceLocator
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     public static T GetService<T>()
-    { 
-        if (typeof(T) == typeof(IAudioService))
-        {
-            return (T)audioService;
-        }
+    {
+
         if (typeof(T) == typeof(IAnalyticsService))
         {
             return (T)analyticsService;
         }
         return default;
+    }
+
+
+
+    public static void SetAnalyticsService(IAnalyticsService service)
+    {
+
     }
 }
