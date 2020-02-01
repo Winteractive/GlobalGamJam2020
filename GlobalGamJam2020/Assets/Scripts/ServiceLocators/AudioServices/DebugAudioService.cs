@@ -7,6 +7,10 @@ using UnityEngine;
 /// </summary>
 public class DebugAudioService : IAudioService
 {
+    public void Initialize()
+    {
+    }
+
     public void PauseAll()
     {
         Debug.Log("Pause All sound");

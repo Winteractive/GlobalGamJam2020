@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class GlobalMediator
 {
-    public delegate void Listener(GameEvents events, object data);
+    public delegate void Listener(GameEvents events, GeneralData data);
 
     static List<IMediatorListener> listeners = new List<IMediatorListener>();
 
@@ -50,12 +50,13 @@ public static class GlobalMediator
     {
         allListeners -= listener;
     }
+
     /// <summary>
     /// Sends a message to all listeners with a event that they will handle
     /// </summary>
     /// <param name="events"></param>
     /// <param name="data"></param>
-    public static void SendMessage(GameEvents gameEvent, object data = null)
+    public static void SendMessage(GameEvents gameEvent, GeneralData data = null)
     {
         allListeners?.Invoke(gameEvent, data);
     }
@@ -77,7 +78,7 @@ public enum GameEvents
     PLAYER_CHARGE_RELEASED = 1 << 3,
     PLAYER_CHARGE_CANCELLED = 1 << 4,
     PLAYER_TAKE_DAMAGE = 1 << 5,
-    PLAYER_BREAK = 1 << 6,
+    PLAYER_COLLIDE_WITH_PLAYER = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
     PLAYER_GOT_MOUNTED = 1 << 8,
     PLAYER_IS_MOUNTING = 1 << 9,
@@ -107,12 +108,19 @@ public class GroundCheckData : PlayerData
     public bool isGrounded;
 }
 
-
 public class PlayerMountingData : PlayerData
 {
     public GameObject characterImMounting;
 }
-
+public class PlayerTriggerBoxData :PlayerData
+{
+    public GameObject collidingObject;
+    public bool enterExit;
+}
+public class PlayerChargeReleaseData : PlayerData
+{
+    public float releasedPower;
+}
 // walking + direction + id
 // stopped walking + id
 // Started charging + id
@@ -125,5 +133,5 @@ public class PlayerMountingData : PlayerData
 
 public interface IMediatorListener
 {
-    void OnMediatorMessageReceived(GameEvents events, object data);
+    void OnMediatorMessageReceived(GameEvents events, GeneralData data);
 }

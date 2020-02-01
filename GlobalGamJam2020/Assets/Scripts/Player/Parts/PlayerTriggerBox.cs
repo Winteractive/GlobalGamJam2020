@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
-public class TagCheck : PlayerPart
+public class PlayerTriggerBox : PlayerPart
 {
     public string tagToTriggerOn;
-    public GameEvents triggerEventsToTrigger;
+    public GameEvents eventsToTrigger;
     List<GameObject> objectsInside = new List<GameObject>();
-
-    public struct TagCheckMessage
-    {
-        public int playerNumber;
-        public bool triggerInside;
-        public GameObject objectInside;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -22,11 +15,11 @@ public class TagCheck : PlayerPart
             if(!objectsInside.Contains(collision.gameObject))
                 objectsInside.Add(collision.gameObject);
 
-            GlobalMediator.SendMessage(triggerEventsToTrigger, new TagCheckMessage
+            GlobalMediator.SendMessage(eventsToTrigger, new PlayerTriggerBoxData
             {
-                playerNumber = playerNumber,
-                triggerInside = true,
-                objectInside = collision.gameObject,
+                id = playerNumber,
+                enterExit = true,
+                collidingObject = collision.gameObject
             });
         }
     }
@@ -38,11 +31,11 @@ public class TagCheck : PlayerPart
 
             if (objectsInside.Count == 0)
             {
-                GlobalMediator.SendMessage(triggerEventsToTrigger, new TagCheckMessage
+                GlobalMediator.SendMessage(eventsToTrigger, new PlayerTriggerBoxData
                 {
-                    playerNumber = playerNumber,
-                    triggerInside = false,
-                    objectInside = collision.gameObject
+                    id = playerNumber,
+                    enterExit = false,
+                    collidingObject = collision.gameObject
                 });
             }
             

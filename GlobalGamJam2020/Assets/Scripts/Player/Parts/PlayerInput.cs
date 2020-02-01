@@ -43,22 +43,14 @@ public class PlayerInput : PlayerPart
         inputs?.Disable();
     }
 
-    public struct InputMessage
-    {
-        public int playerNumber;
-        public Vector2 leftStick;
-        public bool charge;
-
-    }
-
     // Update is called once per frame
     void Update()
     {        
-        GlobalMediator.SendMessage(GameEvents.PLAYER_INPUT, new InputMessage
+        GlobalMediator.SendMessage(GameEvents.PLAYER_INPUT, new PlayerInputData
         {
-            playerNumber = playerNumber,
-            leftStick = inputs.Player.Movement.ReadValue<Vector2>(),
-            charge = holdingCharge,
+            id = playerNumber,
+            axis = inputs.Player.Movement.ReadValue<Vector2>(),
+            key_charge = holdingCharge,
         });
     }
 }

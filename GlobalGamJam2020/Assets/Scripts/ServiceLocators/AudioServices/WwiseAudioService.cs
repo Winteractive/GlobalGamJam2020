@@ -5,9 +5,10 @@ using UnityEngine;
 public class WwiseAudioService : IAudioService
 {
     public static GameObject objRef;
-    public WwiseAudioService()
+    public void Initialize()
     {
         objRef = new GameObject("Wwise gameObject Reference");
+        Object.DontDestroyOnLoad(objRef);
     }
 
     public void PlayMusic(string musicName)

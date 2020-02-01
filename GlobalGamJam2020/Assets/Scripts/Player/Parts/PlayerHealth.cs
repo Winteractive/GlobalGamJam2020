@@ -36,18 +36,21 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         if (currenthealth <= 0)
         {
             Debug.Log("PLAYER "+ playerNumber + " IS DED");
-            GlobalMediator.SendMessage(GameEvents.PLAYER_BREAK, playerNumber);
+            GlobalMediator.SendMessage(GameEvents.PLAYER_SLEEP, new PlayerData
+            {
+                id = playerNumber,
+            });
         }
     }
 
-    private void GetRepaired(int amount)
+    private void GetRepaired()
     {
-        currenthealth += amount;
+        currenthealth++;
         if (currenthealth > maxHealth)
             currenthealth = maxHealth;
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
         if (events.HasFlag(GameEvents.PLAYER_TAKE_DAMAGE))
         {
@@ -58,19 +61,19 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
         {
             //compare event player number to this player number
-            if(data is RepairMessage repairMessage)
+            if(data is PlayerData repairMessage)
             {
-                if(playerNumber == repairMessage.playerNumber)
+                if(playerNumber == repairMessage.id)
                 {
-                    GetRepaired(repairMessage.repairAmount);
+                    GetRepaired();
                 }
             }
         }
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
         {
-            if (data is Charge.ChargeMessage chargeData)
+            if (data is PlayerChargeReleaseData chargeData)
             {
-                if (chargeData.power > powerDamageThreshold && chargeData.playerNumber == playerNumber)
+                if (chargeData.releasedPower > powerDamageThreshold && chargeData.id == playerNumber)
                 {
                     TakeDamage();
                 }

@@ -24,8 +24,7 @@ public class RepairZone : PlayerPart, IMediatorListener
             timer = 0;
             foreach (var playerToRepair in playersInsideTrigger)
             {
-                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerHealth.RepairMessage { playerNumber = playerToRepair, repairAmount = repairAmountPerUpdate });
-                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, playerNumber);
+                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair});
             }
         }
         else
@@ -37,22 +36,22 @@ public class RepairZone : PlayerPart, IMediatorListener
             timer = 0;
     }
 
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
         if(events.HasFlag(GameEvents.PLAYER_REPAIRED))
         {
-            if(data is TagCheck.TagCheckMessage tagMessage)
+            if(data is PlayerTriggerBoxData tagMessage)
             {
-                if(tagMessage.playerNumber == playerNumber)
+                if(tagMessage.id == playerNumber)
                 {
-                    if(tagMessage.triggerInside)
+                    if(tagMessage.enterExit)
                     {
-                        playersInsideTrigger.Add(tagMessage.objectInside.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Add(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
 
                     }
                     else
                     {
-                        playersInsideTrigger.Remove(tagMessage.objectInside.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Remove(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
                     }
                 }
             }

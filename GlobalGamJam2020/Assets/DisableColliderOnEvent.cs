@@ -15,13 +15,13 @@ public class DisableColliderOnEvent : PlayerPart, IMediatorListener
         GlobalMediator.AddListener(this);
 
     }
-    public void OnMediatorMessageReceived(GameEvents events, object data)
+    public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
         if (events.HasFlag(disableEvents))
         {
-            if (data is int playerNumber)
+            if (data is PlayerData playerData)
             {
-                if(playerNumber == this.playerNumber)
+                if(playerNumber == playerData.id)
                 {
                     collider2d.enabled = false;
                 }
@@ -29,11 +29,11 @@ public class DisableColliderOnEvent : PlayerPart, IMediatorListener
         }
         if (events.HasFlag(enableEvents))
         {
-            if (data is int playerNumber)
+            if (data is PlayerData playerData)
             {
-                if (playerNumber == this.playerNumber)
+                if (playerNumber == playerData.id)
                 {
-                    collider2d.enabled = true;
+                    collider2d.enabled = false;
                 }
             }
         }
