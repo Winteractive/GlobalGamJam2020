@@ -79,8 +79,38 @@ public enum GameEvents
     PLAYER_TAKE_DAMAGE = 1 << 5,
     PLAYER_BREAK = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
-    PLAYER_ON_PLAYER_CHECK = 1 << 8,
-    PLAYER_SLEEP = 1<< 9,
+    PLAYER_GOT_MOUNTED = 1 << 8,
+    PLAYER_IS_MOUNTING = 1 << 9,
+    PLAYER_SLEEP = 1 << 10,
+
+}
+
+
+public abstract class GeneralData { }
+
+public class PlayerData : GeneralData
+{
+    public int id;
+}
+
+public class PlayerInputData : PlayerData
+{
+    public Vector2 axis;
+    public bool key_charge;
+    public bool key_abort;
+    public bool key_respawn;
+    public bool key_pause;
+}
+
+public class GroundCheckData : PlayerData
+{
+    public bool isGrounded;
+}
+
+
+public class PlayerMountingData : PlayerData
+{
+    public GameObject characterImMounting;
 }
 
 // walking + direction + id

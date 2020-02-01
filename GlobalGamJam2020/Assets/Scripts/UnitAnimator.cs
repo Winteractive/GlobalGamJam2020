@@ -84,7 +84,14 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 TryStartAnimation(currentInfo.TransitionsTo);
                 SetFrameRate(currentInfo.TransitionsTo);
             }
-            currentFrame = 0;
+            if (currentInfo.loop)
+            {
+                currentFrame = 0;
+            }
+            else // don't loop
+            {
+                currentFrame--;
+            }
         }
 
         spriteRenderer.sprite = currentAnimation[currentFrame] ?? null;
@@ -120,13 +127,13 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 }
             }
         }
-        if(events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
+        if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
-            if(data is TagCheck.TagCheckMessage tagMessage)
+            if (data is TagCheck.TagCheckMessage tagMessage)
             {
                 if (tagMessage.playerNumber == playerNumber)
                 {
-                    if(tagMessage.triggerInside)
+                    if (tagMessage.triggerInside)
                     {
                         TryStartAnimation("Idle");
                         SetFrameRate("Idle");
@@ -134,11 +141,11 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 }
             }
         }
-        if(events.HasFlag(GameEvents.PLAYER_BREAK))
+        if (events.HasFlag(GameEvents.PLAYER_BREAK))
         {
-            if(data is int breakPlayerNumber)
+            if (data is int breakPlayerNumber)
             {
-                if(breakPlayerNumber == playerNumber)
+                if (breakPlayerNumber == playerNumber)
                 {
                     TryStartAnimation("Sleep");
                     SetFrameRate("Sleep");
