@@ -19,7 +19,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
     private Sprite[] currentAnimation;
     [SerializeField] private UnitAnimationInfo currentInfo;
 
-
+    public string currentAnimationName;
     public enum Character { Blue, Pink };
     private Character myCharacter;
 
@@ -101,6 +101,18 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
     {
+        if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
+        {
+            if (data is PlayerData player)
+            {
+                if (player.id == playerNumber)
+                {
+                    TryStartAnimation("Idle");
+                    SetFrameRate("Idle");
+                }
+            }
+        }
+
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_START))
         {
             if (data is PlayerData charge)
@@ -126,20 +138,6 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 }
             }
         }
-        if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
-        {
-            if (data is GroundCheckData tagMessage)
-            {
-                if (tagMessage.id == playerNumber)
-                {
-                    if (tagMessage.isGrounded)
-                    {
-                        TryStartAnimation("Idle");
-                        SetFrameRate("Idle");
-                    }
-                }
-            }
-        }
         if (events.HasFlag(GameEvents.PLAYER_SLEEP))
         {
             if (data is PlayerData breakPlayerNumber)
@@ -148,6 +146,47 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 {
                     TryStartAnimation("Sleep");
                     SetFrameRate("Sleep");
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
+        {
+            if (data is GroundCheckData tagMessage)
+            {
+                if (tagMessage.id == playerNumber)
+                {
+                    if (tagMessage.isGrounded)
+                    {
+                        if(currentAnimationName != "Sleep")
+                        {
+                            TryStartAnimation("Idle");
+                            SetFrameRate("Idle");
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
+        {
+            if (data is PlayerData breakPlayerNumber)
+            {
+                if (breakPlayerNumber.id == playerNumber)
+                {
+                    TryStartAnimation("Squat");
+                    SetFrameRate("Squat");
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_IS_MOUNTING))
+        {
+            if (data is PlayerData breakPlayerNumber)
+            {
+                if (breakPlayerNumber.id == playerNumber)
+                {
+                    TryStartAnimation("OnTop");
+                    SetFrameRate("OnTop");
                 }
             }
         }
@@ -182,5 +221,6 @@ public class UnitAnimator : PlayerPart, IMediatorListener
 
         currentFrame = -1;
         currentAnimation = sprites;
+        currentAnimationName = animation;
     }
 }

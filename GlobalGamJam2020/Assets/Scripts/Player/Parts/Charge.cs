@@ -8,13 +8,13 @@ public class Charge : PlayerPart, IMediatorListener
     bool alowedToCharge;
     bool isCharging;
     Vector2 aimDirection = Vector2.zero;
-    
-
 
     [SerializeField] float chargePower;
     [Range(1, 20)] [SerializeField] float chargePowerIncrement = 1;
     public float maxChargePower;
     public float minChargePower;
+
+    public float powerDamageThresholdWhenHittingFloor = 15;
 
     public override void Initialize(int playerNumber)
     {
@@ -44,36 +44,41 @@ public class Charge : PlayerPart, IMediatorListener
 
             }
         }
-        if(events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
+        if (events.HasFlag(GameEvents.PLAYER_GROUND_CHECK))
         {
-            if(data is GroundCheckData groundCheckData)
+            if (data is GroundCheckData groundCheckData)
             {
-                if(playerNumber == groundCheckData.id)
+                if (playerNumber == groundCheckData.id)
                 {
                     alowedToCharge = groundCheckData.isGrounded;
-                    if (!groundCheckData.isGrounded)
+
+                    if (groundCheckData.isGrounded)
                     {
-                        Reset();
-                        GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_CANCELLED, new PlayerData
+                        if (chargePower > powerDamageThresholdWhenHittingFloor)
                         {
-                            id = playerNumber,
-                        });
+                            GlobalMediator.SendMessage(GameEvents.PLAYER_TAKE_DAMAGE, new PlayerData
+                            {
+                                id = playerNumber,
+                            });
+
+                        }
+                        Reset();
                     }
+                        
                 }
             }
+            //if (events.HasFlag(GameEvents.))
+            //{
+            //    if (data is TagCheck.TagCheckMessage tagMessage)
+            //    {
+            //        if (playerNumber == tagMessage.playerNumber)
+            //        {
+            //            alowedToCharge = tagMessage.triggerInside;
+            //        }
+            //    }
+            //}
         }
-        //if (events.HasFlag(GameEvents.))
-        //{
-        //    if (data is TagCheck.TagCheckMessage tagMessage)
-        //    {
-        //        if (playerNumber == tagMessage.playerNumber)
-        //        {
-        //            alowedToCharge = tagMessage.triggerInside;
-        //        }
-        //    }
-        //}
     }
-
     public void Charging(Vector2 inputDirection)
     {
         if (!isCharging)
@@ -123,7 +128,6 @@ public class Charge : PlayerPart, IMediatorListener
             id = playerNumber,
             releasedPower = chargePower
         });
-        Reset();
     }
     public void Reset()
     {
@@ -142,7 +146,7 @@ public class Charge : PlayerPart, IMediatorListener
     {
         if (isCharging)
         {
-            Gizmos.DrawRay(transform.position, aimDirection * chargePower/10);
+            Gizmos.DrawRay(transform.position, aimDirection * chargePower / 10);
         }
     }
 }

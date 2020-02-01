@@ -34,6 +34,11 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
         mountedPlayer = bottomPlayer.transform;
         transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
         isRiding = true;
+        GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_MOUNTED, new PlayerData
+        {
+            id = bottomPlayer.GetComponent<Player>().playerNumber
+        });
+
     }
 
     private void DismountPlayer()
