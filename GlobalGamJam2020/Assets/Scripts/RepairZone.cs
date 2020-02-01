@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepairZone : PlayerPart, IMediatorListener
 {
-    List<int> playersInsideTrigger = new List<int>();
+    List<PlayerHealth> playersInsideTrigger = new List<PlayerHealth>();
     public int repairAmountPerUpdate;
     public float timeBeforeRepair = 0.5f;
     float timer;
@@ -23,7 +23,11 @@ public class RepairZone : PlayerPart, IMediatorListener
             foreach (var playerToRepair in playersInsideTrigger)
             {
                 Debug.Log("Repair..");
-                GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair});
+                if(playerToRepair.currenthealth < playerToRepair.maxHealth)
+                {
+                    GlobalMediator.SendMessage(GameEvents.PLAYER_REPAIRED, new PlayerData { id = playerToRepair.playerNumber});
+
+                }
             }
         }
         else
@@ -45,12 +49,12 @@ public class RepairZone : PlayerPart, IMediatorListener
                 {
                     if(tagMessage.enterExit)
                     {
-                        playersInsideTrigger.Add(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Add(tagMessage.collidingObject.GetComponent<PlayerHealth>());
 
                     }
                     else
                     {
-                        playersInsideTrigger.Remove(tagMessage.collidingObject.GetComponent<Player>().playerNumber);
+                        playersInsideTrigger.Remove(tagMessage.collidingObject.GetComponent<PlayerHealth>());
                     }
                 }
             }
