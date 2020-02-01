@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundCheck : PlayerPart
 {
-
+    List<GameObject> objectsInside = new List<GameObject>();
     public override void Initialize(int playerNumber)
     {
         base.Initialize(playerNumber);
@@ -13,8 +13,9 @@ public class GroundCheck : PlayerPart
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Ground"))
+        if(collision.CompareTag("Ground") || collision.CompareTag("Player"))
         {
+            objectsInside.Add(collision.gameObject);
             GlobalMediator.SendMessage(GameEvents.PLAYER_GROUND_CHECK, new GroundCheckData
             {
                 id = playerNumber,
@@ -24,13 +25,21 @@ public class GroundCheck : PlayerPart
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        if (collision.CompareTag("Ground") || collision.CompareTag("Player"))
         {
-            GlobalMediator.SendMessage(GameEvents.PLAYER_GROUND_CHECK, new GroundCheckData
+            objectsInside.Remove(collision.gameObject);
+
+
+            if(objectsInside.Count == 0)
             {
-                id = playerNumber,
-                isGrounded = false
-            });
+                Debug.Log("In Air");
+                GlobalMediator.SendMessage(GameEvents.PLAYER_GROUND_CHECK, new GroundCheckData
+                {
+                    id = playerNumber,
+                    isGrounded = false
+                });
+            }
+            
         }
     }
 }

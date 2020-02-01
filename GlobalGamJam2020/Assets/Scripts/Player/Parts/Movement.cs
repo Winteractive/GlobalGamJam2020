@@ -41,13 +41,8 @@ public class Movement : PlayerPart, IMediatorListener
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
-        if (isCharging)
+        if (isCharging || !isGrounded)
             return;
-
-        if (!isGrounded)
-        {
-            inputDirection = Vector2.zero;
-        }
 
         //if (inputDirection.x < 0.5f || inputDirection.x < -0.5f) return;
 
@@ -69,11 +64,6 @@ public class Movement : PlayerPart, IMediatorListener
             //Debug.Log("limiting speed");
         }
 
-    }
-
-    public void OnMediatorMessageReceived(GameEvents events, object data)
-    {
-        
     }
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
@@ -113,7 +103,7 @@ public class Movement : PlayerPart, IMediatorListener
         }
         if (events.HasFlag(GameEvents.PLAYER_CHARGE_RELEASED))
         {
-            if (data is PlayerData chargeState)
+            if (data is PlayerChargeReleaseData chargeState)
             {
                 if (chargeState.id == playerNumber)
                 {
