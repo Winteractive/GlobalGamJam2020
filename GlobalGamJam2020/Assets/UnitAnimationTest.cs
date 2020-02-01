@@ -18,19 +18,19 @@ public class UnitAnimationTest : MonoBehaviour
 
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {
-            unitAnimator.TryStartAnimation(UnitAnimator.Character.Blue, "Idle");
+            unitAnimator.TryStartAnimation("Idle");
         }
         if (Keyboard.current.sKey.wasPressedThisFrame)
         {
-            unitAnimator.TryStartAnimation(UnitAnimator.Character.Pink, "Idle");
+            unitAnimator.TryStartAnimation("Idle");
         }
         if (Keyboard.current.dKey.wasPressedThisFrame)
         {
-            unitAnimator.TryStartAnimation(UnitAnimator.Character.Blue, "ChargeUp");
+            unitAnimator.TryStartAnimation("NotMade");
         }
         if (Keyboard.current.fKey.wasPressedThisFrame)
         {
-            unitAnimator.TryStartAnimation(UnitAnimator.Character.Blue, "ChargeHold");
+            unitAnimator.TryStartAnimation("ChargeHold");
         }
     }
 }

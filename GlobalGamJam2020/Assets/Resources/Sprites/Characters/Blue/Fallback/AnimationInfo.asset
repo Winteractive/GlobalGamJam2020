@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 891b6d05e7a04534caa6dac0156cd7b6, type: 3}
-  m_Name: FallbackInfo
+  m_Name: AnimationInfo
   m_EditorClassIdentifier: 
   FPS: 12
+  TransitionsTo: 

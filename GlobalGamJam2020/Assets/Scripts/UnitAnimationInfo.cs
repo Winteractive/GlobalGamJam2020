@@ -6,4 +6,5 @@ using UnityEngine;
 public class UnitAnimationInfo : ScriptableObject
 {
     public int FPS = 12;
+    public string TransitionsTo;
 }

@@ -11,13 +11,17 @@ public class UnitAnimator : PlayerPart, IMediatorListener
     private string BlueFolder = "Blue/";
     private string FallbackFolder = "Fallback/";
 
+    private string myCharacterFolder = string.Empty;
+
     private string animationInfo = "AnimationInfo";
 
-    public int FPS;
     public int currentFrame;
     private Sprite[] currentAnimation;
+    private UnitAnimationInfo currentInfo;
+
 
     public enum Character { Blue, Pink };
+    private Character myCharacter;
 
     private Dictionary<string, Sprite[]> foundAnimations;
     private Dictionary<string, UnitAnimationInfo> foundInfo;
@@ -28,16 +32,22 @@ public class UnitAnimator : PlayerPart, IMediatorListener
         spriteRenderer = GetComponent<SpriteRenderer>();
         foundAnimations = new Dictionary<string, Sprite[]>();
         foundInfo = new Dictionary<string, UnitAnimationInfo>();
-        TryStartAnimation(playerNumber == 1 ? Character.Blue : Character.Pink, "Idle");
-        SetFrameRate(playerNumber == 1 ? Character.Blue : Character.Pink, "Idle");
+
+
+        myCharacter = playerNumber == 1 ? Character.Blue : Character.Pink;
+        myCharacterFolder = (myCharacter is Character.Blue) ? BlueFolder : PinkFolder;
+
+
+        TryStartAnimation("Idle");
+        SetFrameRate("Idle");
         NextFrame();
     }
 
-    private void SetFrameRate(Character character, string animation)
+    private void SetFrameRate(string animation)
     {
-        string path = characterBase + ((character is Character.Blue) ? BlueFolder : PinkFolder) + animation + "/" + animationInfo;
-        string fallbackPath = characterBase + ((character is Character.Blue) ? BlueFolder : PinkFolder) + FallbackFolder + animationInfo;
-     
+        string path = characterBase + myCharacterFolder + animation + "/" + animationInfo;
+        string fallbackPath = characterBase + myCharacterFolder + FallbackFolder + animationInfo;
+
         UnitAnimationInfo info = null;
 
         if (foundInfo.ContainsKey(path))
@@ -55,11 +65,12 @@ public class UnitAnimator : PlayerPart, IMediatorListener
             else
             {
                 info = Resources.Load<UnitAnimationInfo>(fallbackPath);
-                Debug.LogWarning("fallback info used for: " + character.ToString() + " " + animation);
+                Debug.LogWarning("fallback info used for: " + myCharacter.ToString() + " " + animation);
             }
         }
-        Debug.Log(info);
-        FPS = info.FPS;
+
+        currentInfo = info;
+
     }
 
     public void NextFrame()
@@ -67,48 +78,60 @@ public class UnitAnimator : PlayerPart, IMediatorListener
         currentFrame++;
         if (currentFrame > currentAnimation.Length - 1)
         {
+            if (!string.IsNullOrEmpty(currentInfo.TransitionsTo))
+            {
+                TryStartAnimation(currentInfo.TransitionsTo);
+            }
             currentFrame = 0;
         }
-
+        Debug.Log(currentFrame);
+        Debug.Log("amount: " + currentAnimation.Length);
         spriteRenderer.sprite = currentAnimation[currentFrame] ?? null;
 
-        Invoke("NextFrame", 1f / (float)FPS);
+        Invoke("NextFrame", 1f / (float)currentInfo.FPS);
     }
 
     public void OnMediatorMessageReceived(GameEvents events, object data)
     {
-        if (data is int == false) return;
+        if (data is int == false) return; // to weak
 
         int id = (int)data;
         if (id != playerNumber) return;
 
 
+        if (events.HasFlag(GameEvents.PLAYER_CHARGING)) // Example
+        {
+            TryStartAnimation("ChargeUp");
+            SetFrameRate("ChargeUp");
+        }
 
     }
 
-    public void TryStartAnimation(Character character, string animation)
+    public void TryStartAnimation(string animation)
     {
-        string path = characterBase + ((character is Character.Blue) ? BlueFolder : PinkFolder) + animation + "/";
+        string path = characterBase + myCharacterFolder + animation + "/";
 
         if (foundAnimations.ContainsKey(path))
         {
             currentAnimation = foundAnimations[path];
+            currentFrame = -1;
+            return;
         }
 
         Sprite[] sprites = Resources.LoadAll<Sprite>(path);
 
-        if (sprites == null)
+        if (sprites == null || sprites.Length == 0)
         {
-            Debug.LogWarning("fallback animation used for: " + character.ToString() + " " + animation);
-            sprites = Resources.LoadAll<Sprite>(characterBase + ((character is Character.Blue) ? BlueFolder : PinkFolder) + FallbackFolder);
+            Debug.LogWarning("fallback animation used for: " + myCharacter.ToString() + " " + animation);
+            sprites = Resources.LoadAll<Sprite>(characterBase + myCharacterFolder + FallbackFolder);
             if (sprites == null)
             {
                 Debug.LogWarning("fallback folder not found");
             }
-            else
-            {
-                foundAnimations.Add(path, sprites);
-            }
+        }
+        else
+        {
+            foundAnimations.Add(path, sprites);
         }
 
         currentFrame = -1;
