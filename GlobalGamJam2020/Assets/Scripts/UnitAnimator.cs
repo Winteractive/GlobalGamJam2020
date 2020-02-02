@@ -217,6 +217,16 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 case GameEvents.GAME_STARTED:
 
                     break;
+                case GameEvents.PLAYER_GOT_DISMOUNTED:
+                    break;
+                case GameEvents.RESTART_LEVEL:
+                    break;
+                case GameEvents.PLAYER_REPAIR_TRIGGER_BOX:
+                    break;
+                case GameEvents.LEVEL_WON:
+                    TryStartAnimation("Victory");
+                    SetFrameRate("Victory");
+                    break;
                 default:
                     break;
             }
