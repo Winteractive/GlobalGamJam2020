@@ -97,7 +97,8 @@ public class HeartVisualizer : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.3f);
-        LeanTween.cancel(heart.gameObject);
+        if (heart != null)
+            LeanTween.cancel(heart.gameObject);
 
 
 

@@ -7,6 +7,8 @@ public class Charge : PlayerPart, IMediatorListener
 
     public GameObject chargeDisplay;
     Rigidbody2D rigi;
+
+    bool sleeping;
     bool alowedToCharge;
     bool isCharging;
     Vector2 aimDirection = Vector2.zero;
@@ -30,7 +32,7 @@ public class Charge : PlayerPart, IMediatorListener
     {
         if (data is PlayerInputData inputMessage)
         {
-            if (inputMessage.id != playerNumber) return;
+            if (inputMessage.id != playerNumber || sleeping) return;
 
             if (inputMessage.key_charge)
             {
@@ -69,17 +71,49 @@ public class Charge : PlayerPart, IMediatorListener
                         
                 }
             }
-            //if (events.HasFlag(GameEvents.))
-            //{
-            //    if (data is TagCheck.TagCheckMessage tagMessage)
-            //    {
-            //        if (playerNumber == tagMessage.playerNumber)
-            //        {
-            //            alowedToCharge = tagMessage.triggerInside;
-            //        }
-            //    }
-            //}
         }
+
+        if (events.HasFlag(GameEvents.PLAYER_IS_MOUNTING))
+        {
+            if (data is PlayerTriggerBoxData isMounting)
+            {
+                if (playerNumber == isMounting.id)
+                {
+                    alowedToCharge = isMounting.enterExit;
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
+        {
+            if (data is PlayerData isMounted)
+            {
+                if (playerNumber == isMounted.id)
+                {
+                    alowedToCharge = true;
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_SLEEP))
+        {
+            if (data is PlayerData isSleeping)
+            {
+                if (playerNumber == isSleeping.id)
+                {
+                    sleeping = true;
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
+        {
+            if (data is PlayerData isSleeping)
+            {
+                if (playerNumber == isSleeping.id)
+                {
+                    sleeping = false;
+                }
+            }
+        }
+
     }
     public void Charging(Vector2 inputDirection)
     {
@@ -101,7 +135,7 @@ public class Charge : PlayerPart, IMediatorListener
         if (aimDirection != inputDirection && inputDirection != Vector2.zero && Vector2.Dot(Vector2.up, inputDirection.normalized) > 0)
         {
             aimDirection = inputDirection;
-            chargeDisplay.transform.localPosition = aimDirection;
+            //chargeDisplay.transform.localPosition = aimDirection;
 
         }
         // Aiming with inputMessage.leftStick;

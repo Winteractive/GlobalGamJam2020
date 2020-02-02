@@ -10,7 +10,7 @@ public class Movement : PlayerPart, IMediatorListener
     public float speedLimit = 100;
     public bool isGrounded = false;
     private bool isCharging = false;
-    private bool isBroken = false;
+    private bool sleeping = false;
     private Rigidbody2D rb;
 
 
@@ -40,7 +40,7 @@ public class Movement : PlayerPart, IMediatorListener
                 rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
-        if (isCharging || !isGrounded)
+        if (isCharging || !isGrounded || sleeping)
             return;
 
         //if (inputDirection.x < 0.5f || inputDirection.x < -0.5f) return;
@@ -118,14 +118,20 @@ public class Movement : PlayerPart, IMediatorListener
             {
                 if (breakPlayerNumber.id == playerNumber)
                 {
-                    isBroken = true;
+                    sleeping = true;
                 }
             }
         }
 
         if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
         {
-            isBroken = false;
+            if (data is PlayerData playerRepaired)
+            {
+                if (playerRepaired.id == playerNumber)
+                {
+                    sleeping = false;
+                }
+            }
         }
     }
 }
