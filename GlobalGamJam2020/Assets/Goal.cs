@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,16 @@ public class Goal : MonoBehaviour
     {
         playersInGoal = 0;
         active = true;
+        GlobalMediator.AddListener(RecieveEvents);
+    }
+
+    private void RecieveEvents(GameEvents events, GeneralData data)
+    {
+        if (events.HasFlag(GameEvents.RESET_GAME))
+        {
+            active = true;
+            playersInGoal = 0;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

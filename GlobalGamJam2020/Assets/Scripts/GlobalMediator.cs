@@ -88,10 +88,11 @@ public enum GameEvents
     PLAYER_REPAIR_TRIGGER_BOX = 1 << 13,
 
     PLAYER_GOT_DISMOUNTED = 1 << 14,
-    PLAYER_FORCE_DISMOUNT = 1<< 15,
+    PLAYER_FORCE_DISMOUNT = 1 << 15,
 
     LEVEL_WON = 1 << 16,
     LEVEL_START = 1 << 17,
+    RESET_GAME = 1 << 18
 }
 
 
