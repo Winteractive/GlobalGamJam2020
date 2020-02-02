@@ -6,6 +6,7 @@ using UnityEngine;
 public static class Restarter
 {
     static float timer;
+    static int AwakePlayers = 2;
 
     public static void Initialize()
     {
@@ -38,6 +39,24 @@ public static class Restarter
                     {
                         timer = 0;
                     }
+                    break;
+                case GameEvents.PLAYER_SLEEP:
+                    AwakePlayers--;
+                    if (AwakePlayers == 0)
+                    {
+                        //Using leantween as a timer
+                        LeanTween.value(1, 2, 2f).setOnComplete(()=>
+                        {
+                            if (AwakePlayers == 0)
+                            {
+                                Debug.Log("SLEPT FOR 2 SEC");
+                                GlobalMediator.SendMessage(GameEvents.RESTART_LEVEL);
+                            }
+                        });
+                    }
+                    break;
+                case GameEvents.PLAYER_REPAIRED:
+                    AwakePlayers = 2;
                     break;
             }
         }
