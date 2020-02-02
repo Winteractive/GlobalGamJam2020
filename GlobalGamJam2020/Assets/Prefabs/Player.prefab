@@ -201,8 +201,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRiding: 0
+  isMounted: 0
   yOffset: 0.8
-  circleRaduis: 0
+  circleRaduis: 0.6
   rayDistance: 1
   mask:
     serializedVersion: 2
