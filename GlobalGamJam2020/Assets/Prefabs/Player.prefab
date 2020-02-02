@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620aec23bad64eb4d944167bf6b50ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chargeDisplay: {fileID: 0}
   chargePower: 0
   chargePowerIncrement: 10
   maxChargePower: 20
@@ -200,7 +201,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRiding: 0
+  isMounted: 0
   yOffset: 0.8
+  circleRaduis: 0.6
+  rayDistance: 1
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &7565284245965822466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +369,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ff6ae8118b18649aab9822110fe23b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 256
+  rayDistance: 1
+  circleRaduis: 0.25
+  isGrounded: 0
 --- !u!114 &4582406587799938509
 MonoBehaviour:
   m_ObjectHideFlags: 0

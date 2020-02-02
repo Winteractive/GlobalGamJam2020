@@ -81,6 +81,7 @@ public enum GameEvents
     PLAYER_COLLIDE_WITH_PLAYER = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
     PLAYER_GOT_MOUNTED = 1 << 8,
+    PLAYER_GOT_DISMOUNTED = 1 << 14,
     PLAYER_IS_MOUNTING = 1 << 9,
     PLAYER_SLEEP = 1 << 10,
     RESTART_LEVEL = 1 << 11,

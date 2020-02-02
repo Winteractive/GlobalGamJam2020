@@ -119,6 +119,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                             {
                                 if (currentAnimationName != "Sleep")
                                 {
+                                    Debug.Log("Play Animation Idle: On Ground");
                                     TryStartAnimation("Idle");
                                     SetFrameRate("Idle");
                                 }
@@ -145,6 +146,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     {
                         if (chargeRelesed.id == playerNumber)
                         {
+                            Debug.Log("Play Animation InAir");
                             TryStartAnimation("InAir");
                             SetFrameRate("InAir");
 
@@ -171,6 +173,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                         {
                             if (currentAnimationName == "Sleep")
                             {
+                                Debug.Log("Play Animation Idle: Player Repaired");
                                 TryStartAnimation("Idle");
                                 SetFrameRate("Idle");
                             }

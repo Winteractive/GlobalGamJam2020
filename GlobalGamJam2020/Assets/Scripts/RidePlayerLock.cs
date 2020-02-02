@@ -5,8 +5,14 @@ using UnityEngine;
 public class RidePlayerLock : PlayerPart, IMediatorListener
 {
     public bool isRiding = false;
+    public bool isMounted = false;
     private Transform mountedPlayer;
     public float yOffset = 0.8f;
+
+    bool WallOver;
+    public float circleRaduis;
+    public float rayDistance;
+    public LayerMask mask;
 
     private void Update()
     {
@@ -17,6 +23,37 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                 transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMounted)
+        {
+            var hit = Physics2D.CircleCast(transform.position, circleRaduis, Vector2.up, rayDistance, mask);
+
+            if (hit)
+            {
+                if (!WallOver)
+                {
+                    WallOver = true;
+                    //Send so we can't go to the direction
+
+                }
+            }
+            else
+            {
+                if (WallOver)
+                {
+                    WallOver = false;
+                    //Send so we can't go to the direction
+                }
+            }
+        }
+        else
+        {
+            WallOver = false;
+        }
+
     }
     public override void Initialize(int playerNumber)
     {
@@ -53,7 +90,10 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
 
     private void DismountPlayer()
     {
-        Debug.Log("DISMOUNTING PLAYER");
+        GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_DISMOUNTED, new PlayerData
+        {
+            id = mountedPlayer.GetComponent<Player>().playerNumber
+        });
         mountedPlayer = null;
         isRiding = false;
     }
@@ -62,13 +102,32 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
     {
         if (events.HasFlag(GameEvents.PLAYER_IS_MOUNTING))
         {
-            Debug.Log("PlayerOnPLayer");
             if (data is PlayerTriggerBoxData tagData)
             {
-                Debug.Log("PlayerOnPLayer: " + tagData.enterExit);
+
                 if (tagData.id == playerNumber && tagData.enterExit)
                 {
                     MountPlayer(tagData.collidingObject);
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
+        {
+            if (data is PlayerData tagData)
+            {
+                if (tagData.id == playerNumber)
+                {
+                    isMounted = true;
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_GOT_DISMOUNTED))
+        {
+            if (data is PlayerData tagData)
+            {
+                if (tagData.id == playerNumber)
+                {
+                    isMounted = false;
                 }
             }
         }
@@ -82,5 +141,16 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                 }
             }
         }
+    }
+    private void OnDrawGizmosSelected()
+    {
+
+        Gizmos.color = WallOver ? Color.green : Color.red;
+
+        Gizmos.DrawRay(transform.position, Vector3.up * rayDistance);
+        Gizmos.DrawWireSphere(transform.position + (Vector3.up * rayDistance), circleRaduis);
+
+        Gizmos.color = Color.white;
+
     }
 }
