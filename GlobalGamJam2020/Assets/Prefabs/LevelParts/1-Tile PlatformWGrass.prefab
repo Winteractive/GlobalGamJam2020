@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 92659457891282271}
   - component: {fileID: 2682033308990722394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Edge Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6832310289185623249}
   - component: {fileID: 1137078766261285878}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Edge Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,8 +170,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8068210355868200659}
   - component: {fileID: 6072206991826340424}
-  m_Layer: 0
-  m_Name: 1-Tile Platform
+  m_Layer: 8
+  m_Name: 1-Tile PlatformWGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

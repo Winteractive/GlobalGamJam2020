@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7598715948022475778}
   - component: {fileID: 63386809870702818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,8 +90,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8031372194434264863}
   - component: {fileID: 9010307376102366822}
-  m_Layer: 0
-  m_Name: 4-Tile Platform
+  m_Layer: 8
+  m_Name: 4-Tile PlatformWGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,7 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1899650385700564048}
   - component: {fileID: 5412015789699901402}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Edge Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2664619954947216192}
   - component: {fileID: 3443330070510241955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Edge Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574602411515414241}
   - component: {fileID: 4785168279790991269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2979352497321349201}
   - component: {fileID: 585565458024523284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform Center (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
