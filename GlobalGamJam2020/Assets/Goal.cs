@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-
+    public int necessaryPeopleInGoal = 2;
     public int playersInGoal;
     public bool active;
 
@@ -32,7 +32,7 @@ public class Goal : MonoBehaviour
         {
             playersInGoal++;
 
-            if (playersInGoal == 2)
+            if (playersInGoal == necessaryPeopleInGoal)
             {
                 active = false;
                 GlobalMediator.SendMessage(GameEvents.LEVEL_WON);
