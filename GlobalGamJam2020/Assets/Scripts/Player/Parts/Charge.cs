@@ -120,6 +120,7 @@ public class Charge : PlayerPart, IMediatorListener
         if (!isCharging)
         {
             isCharging = true;
+            chargeDisplay.SetActive(true);
             GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_START, new PlayerData
             {
                 id = playerNumber,
@@ -131,11 +132,15 @@ public class Charge : PlayerPart, IMediatorListener
         {
             chargePower = maxChargePower;
         }
+        chargeDisplay.transform.localScale = new Vector3(0.1f * chargePower, 1, 1);
 
         if (aimDirection != inputDirection && inputDirection != Vector2.zero && Vector2.Dot(Vector2.up, inputDirection.normalized) > 0)
         {
+
             aimDirection = inputDirection;
-            //chargeDisplay.transform.localPosition = aimDirection;
+            Vector3 direction = inputDirection;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            chargeDisplay.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         }
         // Aiming with inputMessage.leftStick;
@@ -160,6 +165,8 @@ public class Charge : PlayerPart, IMediatorListener
         }
 
         rigi.AddForce(aimDirection * chargePower, ForceMode2D.Impulse);
+
+        chargeDisplay.SetActive(false);
 
         GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_RELEASED, new PlayerChargeReleaseData
         {
