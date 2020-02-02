@@ -133,5 +133,17 @@ public class Movement : PlayerPart, IMediatorListener
                 }
             }
         }
+
+        if(events.HasFlag(GameEvents.PLAYER_RESPAWN))
+        {
+            if (data is PlayerRespawnData playerRespawn)
+            {
+                if (playerRespawn.id == playerNumber)
+                {
+                    transform.position = playerRespawn.position;
+                }
+            }
+        }
+
     }
 }

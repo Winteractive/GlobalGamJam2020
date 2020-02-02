@@ -146,16 +146,30 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                 }
             }
         }
+
+        if(events.HasFlag(GameEvents.PLAYER_RESPAWN))
+        {
+            if (data is PlayerData tagData)
+            {
+                if (tagData.id == playerNumber)
+                {
+                    mountedPlayer = null;
+                    isMounted = false;
+                    isRiding = false;
+                }
+            }
+        }
     }
     private void OnDrawGizmosSelected()
     {
+        if(isMounted)
+        {
+            Gizmos.color = WallOver ? Color.green : Color.red;
 
-        Gizmos.color = WallOver ? Color.green : Color.red;
+            Gizmos.DrawRay(transform.position, Vector3.up * rayDistance);
+            Gizmos.DrawWireSphere(transform.position + (Vector3.up * rayDistance), circleRaduis);
 
-        Gizmos.DrawRay(transform.position, Vector3.up * rayDistance);
-        Gizmos.DrawWireSphere(transform.position + (Vector3.up * rayDistance), circleRaduis);
-
-        Gizmos.color = Color.white;
-
+            Gizmos.color = Color.white;
+        }
     }
 }

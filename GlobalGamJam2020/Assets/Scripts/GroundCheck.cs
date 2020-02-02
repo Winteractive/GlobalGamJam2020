@@ -54,30 +54,5 @@ public class GroundCheck : PlayerPart
 
         Gizmos.color = Color.white;
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if(collision.CompareTag("Ground") || collision.CompareTag("Player"))
-    //    {
-    //        objectsInside.Add(collision.gameObject);
-    //        GlobalMediator.SendMessage(GameEvents.PLAYER_GROUND_CHECK, new GroundCheckData
-    //        {
-    //            id = playerNumber,
-    //            isGrounded = true
-    //        });
-    //    }
-    //}
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Ground") || collision.CompareTag("Player"))
-    //    {
-    //        objectsInside.Remove(collision.gameObject);
-
-
-    //        if(objectsInside.Count == 0)
-    //        {
-
-    //        }
-
-    //    }
-    //}
+   
 }

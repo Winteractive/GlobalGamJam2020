@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
             InputManager.Initialize();
             Restarter.Initialize();
             Screenshaker.Initialize();
+            MoveToNextLevel.Initialize();
             DontDestroyOnLoad(gameObject);
         }
         //Time.timeScale = 0.5f;
