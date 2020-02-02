@@ -86,6 +86,7 @@ public enum GameEvents
     RESTART_LEVEL = 1 << 11,
     GAME_STARTED = 1 << 12,
     PLAYER_REPAIR_TRIGGER_BOX = 1 << 13,
+    LEVEL_WON = 1 << 14
 }
 
 
@@ -114,7 +115,7 @@ public class PlayerMountingData : PlayerData
 {
     public GameObject characterImMounting;
 }
-public class PlayerTriggerBoxData :PlayerData
+public class PlayerTriggerBoxData : PlayerData
 {
     public GameObject collidingObject;
     public bool enterExit;

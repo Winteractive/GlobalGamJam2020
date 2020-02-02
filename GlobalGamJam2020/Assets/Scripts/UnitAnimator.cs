@@ -152,7 +152,15 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     }
                     break;
                 case GameEvents.PLAYER_CHARGE_CANCELLED:
+                    if (data is PlayerData cancelData)
+                    {
+                        if (cancelData.id == playerNumber)
+                        {
+                            TryStartAnimation("Idle");
+                            SetFrameRate("Idle");
 
+                        }
+                    }
                     break;
                 case GameEvents.PLAYER_TAKE_DAMAGE:
                     break;
