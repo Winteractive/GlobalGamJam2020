@@ -81,13 +81,14 @@ public enum GameEvents
     PLAYER_COLLIDE_WITH_PLAYER = 1 << 6,
     PLAYER_REPAIRED = 1 << 7,
     PLAYER_GOT_MOUNTED = 1 << 8,
-    PLAYER_GOT_DISMOUNTED = 1 << 14,
     PLAYER_IS_MOUNTING = 1 << 9,
     PLAYER_SLEEP = 1 << 10,
     RESTART_LEVEL = 1 << 11,
     GAME_STARTED = 1 << 12,
     PLAYER_REPAIR_TRIGGER_BOX = 1 << 13,
     LEVEL_WON = 1 << 14
+    PLAYER_GOT_DISMOUNTED = 1 << 15,
+    PLAYER_FORCE_DISMOUNT = 1<< 16
 }
 
 
@@ -124,6 +125,10 @@ public class PlayerTriggerBoxData : PlayerData
 public class PlayerChargeReleaseData : PlayerData
 {
     public float releasedPower;
+}
+public class PlayerGotMountedData : PlayerData
+{
+    public Transform playerMounted;
 }
 // walking + direction + id
 // stopped walking + id

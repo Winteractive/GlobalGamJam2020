@@ -16,7 +16,7 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
 
     private void Update()
     {
-        if (isRiding)
+        if (isRiding && !isMounted)
         {
             if (mountedPlayer)
             {
@@ -36,7 +36,10 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                 if (!WallOver)
                 {
                     WallOver = true;
-                    //Send so we can't go to the direction
+                    GlobalMediator.SendMessage(GameEvents.PLAYER_FORCE_DISMOUNT, new PlayerData
+                    {
+                        id = mountedPlayer.GetComponent<Player>().playerNumber,
+                    });
 
                 }
             }
@@ -67,33 +70,24 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
         {
             return;
         }
-        //Debug.DrawRay(transform.position, bottomPlayer.transform.position + new Vector3(0, yOffset, 0) - transform.position, Color.red, 0.5f);
-        //RaycastHit2D hitData = Physics2D.CircleCast(transform.position, 0.05f, bottomPlayer.transform.position + new Vector3(0, yOffset, 0) - transform.position, LayerMask.GetMask("Ground"));
-        //Debug.Log("hit " + hitData.collider.name);
-        //Debug.Log(hitData);
-        //if (false)
-        //{
-        //    Debug.Log("RAYCAST HIT SOMETHING I THINK");
-        //    return;
-        //}
-
-        Debug.Log("MOUNTING PLAYER");
         mountedPlayer = bottomPlayer.transform;
         transform.position = mountedPlayer.position + new Vector3(0, yOffset, 0);
         isRiding = true;
-        GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_MOUNTED, new PlayerData
+        GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_MOUNTED, new PlayerGotMountedData
         {
-            id = bottomPlayer.GetComponent<Player>().playerNumber
+            id = bottomPlayer.GetComponent<Player>().playerNumber,
+            playerMounted = transform
         });
 
     }
 
     private void DismountPlayer()
     {
-        GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_DISMOUNTED, new PlayerData
-        {
-            id = mountedPlayer.GetComponent<Player>().playerNumber
-        });
+        if (mountedPlayer)
+            GlobalMediator.SendMessage(GameEvents.PLAYER_GOT_DISMOUNTED, new PlayerData
+            {
+                id = mountedPlayer.GetComponent<Player>().playerNumber
+            });
         mountedPlayer = null;
         isRiding = false;
     }
@@ -111,13 +105,24 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                 }
             }
         }
-        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
+        if (events.HasFlag(GameEvents.PLAYER_FORCE_DISMOUNT))
         {
             if (data is PlayerData tagData)
             {
                 if (tagData.id == playerNumber)
                 {
+                    DismountPlayer();
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_GOT_MOUNTED))
+        {
+            if (data is PlayerGotMountedData tagData)
+            {
+                if (tagData.id == playerNumber)
+                {
                     isMounted = true;
+                    mountedPlayer = tagData.playerMounted;
                 }
             }
         }
