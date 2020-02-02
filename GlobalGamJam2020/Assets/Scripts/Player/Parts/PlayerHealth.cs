@@ -25,7 +25,7 @@ public class PlayerHealth : PlayerPart, IMediatorListener
     {
         if (currenthealth <= 0)
         {
-            Debug.Log("PLAYER "+ playerNumber + " IS DED");
+            //Debug.Log("PLAYER "+ playerNumber + " IS DED");
             GlobalMediator.SendMessage(GameEvents.PLAYER_SLEEP, new PlayerData
             {
                 id = playerNumber,
@@ -58,6 +58,16 @@ public class PlayerHealth : PlayerPart, IMediatorListener
             if(data is PlayerData repairMessage)
             {
                 if(playerNumber == repairMessage.id)
+                {
+                    GetRepaired();
+                }
+            }
+        }
+        if (events.HasFlag(GameEvents.PLAYER_RESPAWN))
+        {
+            if (data is PlayerData playerRespawn)
+            {
+                if (playerRespawn.id == playerNumber)
                 {
                     GetRepaired();
                 }

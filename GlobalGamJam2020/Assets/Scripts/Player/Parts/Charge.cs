@@ -113,6 +113,17 @@ public class Charge : PlayerPart, IMediatorListener
                 }
             }
         }
+        if (events.HasFlag(GameEvents.PLAYER_RESPAWN))
+        {
+            if (data is PlayerData tagData)
+            {
+                if (tagData.id == playerNumber)
+                {
+                    sleeping = false;
+                    alowedToCharge = true;
+                }
+            }
+        }
 
     }
     public void Charging(Vector2 inputDirection)

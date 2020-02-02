@@ -119,7 +119,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                             {
                                 if (currentAnimationName != "Sleep")
                                 {
-                                    Debug.Log("Play Animation Idle: On Ground");
+                                    //Debug.Log("Play Animation Idle: On Ground");
                                     TryStartAnimation("Idle");
                                     SetFrameRate("Idle");
                                 }
@@ -146,7 +146,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     {
                         if (chargeRelesed.id == playerNumber)
                         {
-                            Debug.Log("Play Animation InAir");
+                            //Debug.Log("Play Animation InAir");
                             TryStartAnimation("InAir");
                             SetFrameRate("InAir");
 
@@ -173,7 +173,7 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                         {
                             if (currentAnimationName == "Sleep")
                             {
-                                Debug.Log("Play Animation Idle: Player Repaired");
+                                //Debug.Log("Play Animation Idle: Player Repaired");
                                 TryStartAnimation("Idle");
                                 SetFrameRate("Idle");
                             }
@@ -220,6 +220,8 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                 case GameEvents.PLAYER_GOT_DISMOUNTED:
                     break;
                 case GameEvents.RESTART_LEVEL:
+                    TryStartAnimation("Idle");
+                    SetFrameRate("Idle");
                     break;
                 case GameEvents.PLAYER_REPAIR_TRIGGER_BOX:
                     break;
