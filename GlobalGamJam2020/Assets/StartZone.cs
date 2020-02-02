@@ -37,9 +37,9 @@ public class StartZone : MonoBehaviour, IMediatorListener
                         nextZone.enabled = false;
                     break;
                 case GameEvents.LEVEL_WON:
-                    if (nextZone)
-                        nextZone.enabled = true;
-                    enabled = false;
+                 //   if (nextZone)
+                 //       nextZone.enabled = true;
+                 //   enabled = false;
                     break;
                 case GameEvents.LEVEL_START:
                     RespawnPlayers();

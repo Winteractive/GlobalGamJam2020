@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +11,6 @@ public static class AudioManager
     {
         GlobalMediator.AddListener(PlaySoundEvent);
         targetObject = new GameObject("@Wwise Audio Target");
-
 
     }
 
@@ -27,7 +26,8 @@ public static class AudioManager
                     PlayerInputData inputData = (PlayerInputData)data;
                     string player = inputData.id == 1 ? "blue_" : "pink_";
 
-                    AkSoundEngine.SetRTPCValue(player + "volume", Mathf.Abs(inputData.axis.x));
+
+                    AkSoundEngine.SetRTPCValue(player + "volume", Mathf.Abs(inputData.axis.x), targetObject);
                     break;
                 case GameEvents.PLAYER_GROUND_CHECK:
                     GroundCheckData check = (GroundCheckData)data;
@@ -90,7 +90,7 @@ public static class AudioManager
                     AkSoundEngine.PostEvent("players_collide", targetObject);
                     break;
                 case GameEvents.GAME_STARTED:
-                    AkSoundEngine.PostEvent("bgm_start", targetObject);
+                   // AkSoundEngine.PostEvent("bgm_start", targetObject);
                     break;
                 case GameEvents.RESTART_LEVEL:
                     AkSoundEngine.PostEvent("level_restart", targetObject);
@@ -99,6 +99,17 @@ public static class AudioManager
                     break;
                 case GameEvents.LEVEL_WON:
                     AkSoundEngine.PostEvent("level_transition", targetObject);
+                    break;
+                case GameEvents.PLAYER_GOT_DISMOUNTED:
+                    break;
+                case GameEvents.PLAYER_FORCE_DISMOUNT:
+                    break;
+                case GameEvents.LEVEL_START:
+                    AkSoundEngine.PostEvent("bgm_start", targetObject);
+                    break;
+                case GameEvents.RESET_GAME:
+                    break;
+                case GameEvents.PLAYER_RESPAWN:
                     break;
                 default:
                     break;

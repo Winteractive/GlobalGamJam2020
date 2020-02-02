@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
             InputManager.Initialize();
             Restarter.Initialize();
             Screenshaker.Initialize();
+            EventWriter.Initialize(); // remove me
             MoveToNextLevel.Initialize();
             DontDestroyOnLoad(gameObject);
         }

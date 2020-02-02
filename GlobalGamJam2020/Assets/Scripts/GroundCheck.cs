@@ -9,6 +9,8 @@ public class GroundCheck : PlayerPart
     public float rayDistance = 2;
     public float circleRaduis = 1;
     public bool isGrounded;
+
+    public float cirlceOffsetY;
     public override void Initialize(int playerNumber)
     {
         base.Initialize(playerNumber);
@@ -17,7 +19,9 @@ public class GroundCheck : PlayerPart
 
     private void FixedUpdate()
     {
-        var hit = Physics2D.CircleCast(transform.position + Vector3.up, circleRaduis, Vector2.down, rayDistance, mask);
+        // var hit = Physics2D.CircleCast(transform.position + Vector3.up, circleRaduis, Vector2.down, rayDistance, mask);
+
+        var hit = Physics2D.OverlapCircle(transform.position + (Vector3.up * cirlceOffsetY), circleRaduis, mask);
 
         if (hit)
         {
@@ -33,7 +37,7 @@ public class GroundCheck : PlayerPart
         }
         else
         {
-            if(isGrounded)
+            if (isGrounded)
             {
                 isGrounded = false;
                 GlobalMediator.SendMessage(GameEvents.PLAYER_GROUND_CHECK, new GroundCheckData
@@ -49,10 +53,10 @@ public class GroundCheck : PlayerPart
         Gizmos.color = isGrounded ? Color.green : Color.red;
 
 
-        Gizmos.DrawRay(transform.position + Vector3.up, Vector3.down * rayDistance);
-        Gizmos.DrawWireSphere(transform.position + Vector3.up + (Vector3.down * rayDistance), circleRaduis);
+        // Gizmos.DrawRay(transform.position + Vector3.up, Vector3.down * rayDistance);
+        Gizmos.DrawWireSphere(transform.position + (Vector3.up * cirlceOffsetY), circleRaduis);
 
         Gizmos.color = Color.white;
     }
-   
+
 }

@@ -87,7 +87,6 @@ MonoBehaviour:
   brakeValue: 100
   speedLimit: 6
   isGrounded: 0
-  directionNotToMoveIn: 0
 --- !u!114 &2399480705214206772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,4 +601,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairAmountPerUpdate: 1
-  timeBeforeRepair: 1
+  timeBeforeRepair: 0.1

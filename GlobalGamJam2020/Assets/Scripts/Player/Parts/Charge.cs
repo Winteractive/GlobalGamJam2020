@@ -26,6 +26,7 @@ public class Charge : PlayerPart, IMediatorListener
         rigi = GetComponent<Rigidbody2D>();
         chargePower = minChargePower;
         GlobalMediator.AddListener(this);
+        chargeDisplay.gameObject.SetActive(false);
     }
 
     public void OnMediatorMessageReceived(GameEvents events, GeneralData data)
@@ -68,7 +69,7 @@ public class Charge : PlayerPart, IMediatorListener
                         }
                         Reset();
                     }
-                        
+
                 }
             }
         }
@@ -164,7 +165,7 @@ public class Charge : PlayerPart, IMediatorListener
 
         if (chargePower < minChargePower)
             chargePower = minChargePower;
-
+        chargeDisplay.SetActive(false);
         if (Vector2.Dot(Vector2.up, inputDirection.normalized) < 0)
         {
             Reset();
@@ -177,7 +178,7 @@ public class Charge : PlayerPart, IMediatorListener
 
         rigi.AddForce(aimDirection * chargePower, ForceMode2D.Impulse);
 
-        chargeDisplay.SetActive(false);
+
 
         GlobalMediator.SendMessage(GameEvents.PLAYER_CHARGE_RELEASED, new PlayerChargeReleaseData
         {

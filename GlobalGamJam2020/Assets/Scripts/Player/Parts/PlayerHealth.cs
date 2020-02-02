@@ -6,7 +6,7 @@ public class PlayerHealth : PlayerPart, IMediatorListener
 {
     public int currenthealth;
     public int maxHealth;
-    
+
 
     private void Start()
     {
@@ -26,11 +26,16 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         if (currenthealth <= 0)
         {
             //Debug.Log("PLAYER "+ playerNumber + " IS DED");
-            GlobalMediator.SendMessage(GameEvents.PLAYER_SLEEP, new PlayerData
-            {
-                id = playerNumber,
-            });
+            Invoke("GoToBed", 0.1f);
         }
+    }
+
+    private void GoToBed()
+    {
+        GlobalMediator.SendMessage(GameEvents.PLAYER_SLEEP, new PlayerData
+        {
+            id = playerNumber,
+        });
     }
 
     private void GetRepaired()
@@ -55,9 +60,9 @@ public class PlayerHealth : PlayerPart, IMediatorListener
         if (events.HasFlag(GameEvents.PLAYER_REPAIRED))
         {
             //compare event player number to this player number
-            if(data is PlayerData repairMessage)
+            if (data is PlayerData repairMessage)
             {
-                if(playerNumber == repairMessage.id)
+                if (playerNumber == repairMessage.id)
                 {
                     GetRepaired();
                 }
@@ -73,5 +78,17 @@ public class PlayerHealth : PlayerPart, IMediatorListener
                 }
             }
         }
+        if (events.HasFlag(GameEvents.LEVEL_START))
+        {
+
+            GetRepaired();
+
+
+        }
+        if (events.HasFlag(GameEvents.RESET_GAME))
+        {
+            GetRepaired();
+        }
+
     }
 }

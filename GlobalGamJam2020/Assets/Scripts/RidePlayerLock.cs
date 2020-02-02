@@ -14,7 +14,7 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
     public float rayDistance;
     public LayerMask mask;
 
-    private void Update()
+    private void LateUpdate()
     {
         if (isRiding && !isMounted)
         {
@@ -27,7 +27,7 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
 
     private void FixedUpdate()
     {
-        if (isMounted)
+        if (isMounted && mountedPlayer != null)
         {
             var hit = Physics2D.CircleCast(transform.position, circleRaduis, Vector2.up, rayDistance, mask);
 
@@ -147,7 +147,7 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
             }
         }
 
-        if(events.HasFlag(GameEvents.PLAYER_RESPAWN))
+        if (events.HasFlag(GameEvents.PLAYER_RESPAWN))
         {
             if (data is PlayerData tagData)
             {
@@ -156,13 +156,14 @@ public class RidePlayerLock : PlayerPart, IMediatorListener
                     mountedPlayer = null;
                     isMounted = false;
                     isRiding = false;
+                    WallOver = false;
                 }
             }
         }
     }
     private void OnDrawGizmosSelected()
     {
-        if(isMounted)
+        if (isMounted)
         {
             Gizmos.color = WallOver ? Color.green : Color.red;
 

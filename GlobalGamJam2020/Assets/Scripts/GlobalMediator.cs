@@ -104,6 +104,11 @@ public class PlayerData : GeneralData
     public int id;
 }
 
+public class LevelStartData : GeneralData
+{
+    public int levelIndex;
+}
+
 public class PlayerInputData : PlayerData
 {
     public Vector2 axis;
@@ -138,7 +143,6 @@ public class PlayerGotMountedData : PlayerData
 public class PlayerRespawnData : PlayerData
 {
     public Vector3 position;
-
 }
 // walking + direction + id
 // stopped walking + id

@@ -40,7 +40,7 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
                     ""id"": ""e1bd147b-13a9-41b4-957a-67b588dea5d0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold(duration=1.5)""
                 }
             ],
             ""bindings"": [

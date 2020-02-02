@@ -32,8 +32,8 @@ public static class RumbleManager
                 case GameEvents.PLAYER_INPUT:
                     break;
                 case GameEvents.PLAYER_GROUND_CHECK:
-                    GroundCheckData gData = (GroundCheckData)data;
-                    RumbleController(gData.id, 0.2f, 0.3f);
+                    //   GroundCheckData gData = (GroundCheckData)data;
+                    //   RumbleController(gData.id, 0.2f, 0.3f);
                     break;
                 case GameEvents.PLAYER_CHARGE_START:
                     PlayerData pData = (PlayerData)data;
@@ -56,7 +56,7 @@ public static class RumbleManager
                     break;
                 case GameEvents.PLAYER_GOT_MOUNTED:
                     pData = (PlayerData)data;
-                    RumbleController(pData.id,0.2f, 0.4f);
+                    RumbleController(pData.id, 0.2f, 0.4f);
                     break;
                 case GameEvents.PLAYER_IS_MOUNTING:
                     pData = (PlayerData)data;

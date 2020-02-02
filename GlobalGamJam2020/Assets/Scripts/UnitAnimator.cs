@@ -165,6 +165,17 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     }
                     break;
                 case GameEvents.PLAYER_TAKE_DAMAGE:
+                    if (data is PlayerData damageData)
+                    {
+                        if (damageData.id == playerNumber)
+                        {
+                            TryStartAnimation("Idle");
+                            SetFrameRate("Idle");
+                        }
+
+                    }
+
+
                     break;
                 case GameEvents.PLAYER_REPAIRED:
                     if (data is PlayerData player)

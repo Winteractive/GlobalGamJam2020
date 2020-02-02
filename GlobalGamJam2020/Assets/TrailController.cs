@@ -18,12 +18,12 @@ public class TrailController : PlayerPart, IMediatorListener
     {
         if (value)
         {
-            spriteTrail.EnableTrail();
+            // spriteTrail.EnableTrail();
             spriteTrail.m_CurrentTrailPreset.m_TrailDuration = 0.2f;
         }
         else
         {
-            spriteTrail.m_CurrentTrailPreset.m_TrailDuration = 0.05f;
+            spriteTrail.m_CurrentTrailPreset.m_TrailDuration = 0.1f;
         }
     }
 
