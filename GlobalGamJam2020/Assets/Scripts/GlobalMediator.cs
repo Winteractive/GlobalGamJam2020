@@ -92,8 +92,8 @@ public enum GameEvents
 
     LEVEL_WON = 1 << 16,
     LEVEL_START = 1 << 17,
-    RESET_GAME = 1 << 18
-    PLAYER_RESPAWN = 1<< 19,
+    RESET_GAME = 1 << 18,
+    PLAYER_RESPAWN = 1 << 19,
 }
 
 

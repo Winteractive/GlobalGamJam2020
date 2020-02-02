@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public static class MoveToNextLevel
 {
@@ -10,7 +7,7 @@ public static class MoveToNextLevel
     public static GameObject cam;
     public static float firstLevelYPos;
 
-    // Start is called before the first frame update
+   
     public static void Initialize()
     {
         GlobalMediator.AddListener(RecieveEvents);
