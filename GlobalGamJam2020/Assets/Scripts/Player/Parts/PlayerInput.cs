@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInput : PlayerPart
 {
@@ -15,7 +16,7 @@ public class PlayerInput : PlayerPart
         allowedToMove = false;
         InputManager.SetPlayerNumberUpdateDevice(playerNumber, InputManager_OnChanges);
         InputManager_OnChanges();
-        
+
         GlobalMediator.AddListener(RecieveEvents);
     }
 
@@ -99,7 +100,12 @@ public class PlayerInput : PlayerPart
     // Update is called once per frame
     void Update()
     {
-        if (!allowedToMove) return;
+        // if (Gamepad.current.buttonSouth.wasPressedThisFrame)
+        // {
+        //     AkSoundEngine.PostEvent("player_repair", this.gameObject);
+        // }
+
+        // if (!allowedToMove) return;
         GlobalMediator.SendMessage(GameEvents.PLAYER_INPUT, new PlayerInputData
         {
             id = playerNumber,

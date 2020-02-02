@@ -2664,7 +2664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446665616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -500.01, y: 1.23, z: 0}
+  m_LocalPosition: {x: 0, y: 1.23, z: 0}
   m_LocalScale: {x: 5.009, y: 5.009, z: 5.009}
   m_Children: []
   m_Father: {fileID: 1847897474}
@@ -2744,7 +2744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461379346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 161369726}
@@ -5588,7 +5588,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997463500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1305315812}
@@ -5693,66 +5693,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7462044156315231060, guid: c89ae4fbb5832814da6c14cf5f60c775,
+    - target: {fileID: 3248044616911460497, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: playerNumber
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: maxChargePower
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: minChargePower
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: powerDamageThresholdWhenHittingFloor
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: chargePowerIncrement
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 890171376, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2acb29b1ad3e80f4fa16d7b3a34a4812,
         type: 3}
-    - target: {fileID: 3625570195881169159, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: yOffset
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2485278811456698015, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.546
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250680528445232625, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6896185232031255147, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1217168987876305750, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: distanceMagnitude
-      value: -0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 3248044616911460497, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: playerNumber
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2932036538450026213, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: m_EdgeRadius
@@ -5778,10 +5728,60 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.125
       objectReference: {fileID: 0}
+    - target: {fileID: 2485278811456698015, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.546
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896185232031255147, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8393224824021774568, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: triggerEventsToTrigger
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462044156315231060, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: playerNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250680528445232625, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625570195881169159, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: yOffset
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: maxChargePower
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: minChargePower
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: powerDamageThresholdWhenHittingFloor
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: chargePowerIncrement
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1217168987876305750, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: distanceMagnitude
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 2027387468013085419, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
@@ -5927,7 +5927,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098593971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 784686943}
@@ -6080,7 +6080,7 @@ PrefabInstance:
     - target: {fileID: 2463007066595572334, guid: f931b9f23b8db41418b1b027cb769f62,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.67
+      value: 0.76
       objectReference: {fileID: 0}
     - target: {fileID: 2463007066595572334, guid: f931b9f23b8db41418b1b027cb769f62,
         type: 3}
@@ -6222,56 +6222,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7462044156315231060, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: playerNumber
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: maxChargePower
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: minChargePower
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: powerDamageThresholdWhenHittingFloor
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: chargePowerIncrement
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 890171376, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 57c51f87e01449c4dab36102ac722e7c,
         type: 3}
-    - target: {fileID: 3625570195881169159, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: yOffset
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2485278811456698015, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.546
-      objectReference: {fileID: 0}
-    - target: {fileID: 8250680528445232625, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6896185232031255147, guid: c89ae4fbb5832814da6c14cf5f60c775,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 2932036538450026213, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: m_EdgeRadius
@@ -6297,10 +6252,55 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2485278811456698015, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.546
+      objectReference: {fileID: 0}
+    - target: {fileID: 6896185232031255147, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 8393224824021774568, guid: c89ae4fbb5832814da6c14cf5f60c775,
         type: 3}
       propertyPath: triggerEventsToTrigger
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7462044156315231060, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: playerNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250680528445232625, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3625570195881169159, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: yOffset
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: maxChargePower
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: minChargePower
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: powerDamageThresholdWhenHittingFloor
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319794016118456010, guid: c89ae4fbb5832814da6c14cf5f60c775,
+        type: 3}
+      propertyPath: chargePowerIncrement
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c89ae4fbb5832814da6c14cf5f60c775, type: 3}
@@ -8399,7 +8399,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461374429}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 672912018}
@@ -8444,7 +8444,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1466332668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1871820618}
@@ -8708,7 +8708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538975292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408712875}
@@ -10152,7 +10152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1560593432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1901777562}
@@ -13539,7 +13539,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847897473}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 446665617}
@@ -15888,7 +15888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083327389}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 291143152}

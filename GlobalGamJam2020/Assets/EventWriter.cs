@@ -12,7 +12,7 @@ public static class EventWriter
 
     private static void RecieveEvents(GameEvents events, GeneralData data)
     {
-        if (events != GameEvents.PLAYER_INPUT)
-            Debug.Log(events);
+      //  if (events != GameEvents.PLAYER_INPUT)
+          //  Debug.Log(events);
     }
 }

@@ -31,7 +31,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 74ac27596dedd54c8afa7249eadb96d7
     GuidInternal: 
-    m_lastTime: -8586210229670852070
+    m_lastTime: -8586209648848884484
     List:
     - name: cloudBank
       guid: 29b26effce254f4fb33195a1bf17617c
@@ -47,7 +47,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 7eba7e574eeb6f469ffeae9a2028e78d
     GuidInternal: 
-    m_lastTime: -8586210229671151271
+    m_lastTime: -8586209524389956241
     List:
     - name: bgm_start
       guid: 42542ccbc4ea2640a3baaeb61cba6717
@@ -119,6 +119,34 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
+    - name: level_restart
+      guid: b7aa0f367ff96848a6312b6d6d767439
+      id: 2707338441
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: level_restart
+        ObjectType: 3
+      Path: Default Work Unit\sfx\level_restart
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: level_transition
+      guid: 0eabf2637123bb47a440f39f1d307d6f
+      id: 2305840145
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: level_transition
+        ObjectType: 3
+      Path: Default Work Unit\sfx\level_transition
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: pink_release_charge
       guid: 96b031c7f581f84ba71fa21760a16310
       id: 1282430586
@@ -172,6 +200,20 @@ MonoBehaviour:
       - ElementName: player_mounted
         ObjectType: 3
       Path: Default Work Unit\sfx\player_mounted
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: player_repair
+      guid: cd38e60aac5ac44da8b9b00adf24dffd
+      id: 189392646
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sfx
+        ObjectType: 4
+      - ElementName: player_repair
+        ObjectType: 3
+      Path: Default Work Unit\sfx\player_repair
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -300,7 +342,7 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 3875d303fb4468479077622945cbb778
     GuidInternal: 
-    m_lastTime: -8586210229671141299
+    m_lastTime: -8586209524389956241
     List:
     - name: blue_charge
       guid: f6b5f05f987e754d8823d637ef4080ea
@@ -338,6 +380,24 @@ MonoBehaviour:
       - ElementName: pink_volume
         ObjectType: 13
       Path: Default Work Unit\pink_volume
+    - name: repair_volume
+      guid: 1bf5e1c7317b9a44afda44e12437d380
+      id: 2356922071
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: repair_volume
+        ObjectType: 13
+      Path: Default Work Unit\repair_volume
+    - name: sleep_filter
+      guid: 4c30068c9a3f6b478c429d2494d5b9c1
+      id: 2246830651
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: sleep_filter
+        ObjectType: 13
+      Path: Default Work Unit\sleep_filter
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -425,6 +485,6 @@ MonoBehaviour:
   - /GlobalGameJam2020
   - /GlobalGameJam2020/Events
   - /GlobalGameJam2020/Events/Default Work Unit
-  - /GlobalGameJam2020/Events/Default Work Unit/Music
+  - /GlobalGameJam2020/Events/Default Work Unit/sfx
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
