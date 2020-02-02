@@ -154,7 +154,15 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     }
                     break;
                 case GameEvents.PLAYER_CHARGE_CANCELLED:
+                    if (data is PlayerData cancelData)
+                    {
+                        if (cancelData.id == playerNumber)
+                        {
+                            TryStartAnimation("Idle");
+                            SetFrameRate("Idle");
 
+                        }
+                    }
                     break;
                 case GameEvents.PLAYER_TAKE_DAMAGE:
                     break;
@@ -208,6 +216,16 @@ public class UnitAnimator : PlayerPart, IMediatorListener
                     break;
                 case GameEvents.GAME_STARTED:
 
+                    break;
+                case GameEvents.PLAYER_GOT_DISMOUNTED:
+                    break;
+                case GameEvents.RESTART_LEVEL:
+                    break;
+                case GameEvents.PLAYER_REPAIR_TRIGGER_BOX:
+                    break;
+                case GameEvents.LEVEL_WON:
+                    TryStartAnimation("Victory");
+                    SetFrameRate("Victory");
                     break;
                 default:
                     break;

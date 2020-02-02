@@ -87,6 +87,7 @@ MonoBehaviour:
   brakeValue: 100
   speedLimit: 6
   isGrounded: 0
+  directionNotToMoveIn: 0
 --- !u!114 &2399480705214206772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,8 +205,8 @@ MonoBehaviour:
   isRiding: 0
   isMounted: 0
   yOffset: 0.8
-  circleRaduis: 0
-  rayDistance: 1
+  circleRaduis: 0.6
+  rayDistance: 0.55
   mask:
     serializedVersion: 2
     m_Bits: 256
