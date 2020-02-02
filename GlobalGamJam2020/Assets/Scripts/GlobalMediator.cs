@@ -93,6 +93,7 @@ public enum GameEvents
     LEVEL_WON = 1 << 16,
     LEVEL_START = 1 << 17,
     RESET_GAME = 1 << 18
+    PLAYER_RESPAWN = 1<< 19,
 }
 
 
@@ -133,6 +134,11 @@ public class PlayerChargeReleaseData : PlayerData
 public class PlayerGotMountedData : PlayerData
 {
     public Transform playerMounted;
+}
+public class PlayerRespawnData : PlayerData
+{
+    public Vector3 position;
+
 }
 // walking + direction + id
 // stopped walking + id

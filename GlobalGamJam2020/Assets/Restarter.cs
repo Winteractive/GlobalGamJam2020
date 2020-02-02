@@ -25,18 +25,19 @@ public static class Restarter
                     PlayerInputData pInData = (PlayerInputData)data;
                     if (pInData.key_respawn)
                     {
-                        timer += Time.deltaTime;
-                        if (timer > 1.5f)
-                        {
-                            Debug.Log("restart level");
-                            timer = 0;
-                            GlobalMediator.SendMessage(GameEvents.RESTART_LEVEL);
-                            return;
-                        }
+                        GlobalMediator.SendMessage(GameEvents.RESTART_LEVEL);
+                        //timer += Time.deltaTime;
+                        ////if (timer > 1.5f)
+                        ////{
+                        ////    Debug.Log("restart level");
+                        ////    timer = 0;
+                            
+                        ////    return;
+                        ////}
                     }
                     else
                     {
-                        timer = 0;
+                        //timer = 0;
                     }
                     break;
             }

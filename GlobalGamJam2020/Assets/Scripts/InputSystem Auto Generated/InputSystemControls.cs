@@ -33,6 +33,14 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1bd147b-13a9-41b4-957a-67b588dea5d0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -123,6 +131,28 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
                     ""action"": ""Charge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1ce31c8c-02cf-4a01-9f2d-32048d0cbb4d"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a04d21d1-f994-45cf-b056-5fa6478fd2ff"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -133,6 +163,7 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_Charge = m_Player.FindAction("Charge", throwIfNotFound: true);
+        m_Player_Respawn = m_Player.FindAction("Respawn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -184,12 +215,14 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_Charge;
+    private readonly InputAction m_Player_Respawn;
     public struct PlayerActions
     {
         private @InputSystemControls m_Wrapper;
         public PlayerActions(@InputSystemControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @Charge => m_Wrapper.m_Player_Charge;
+        public InputAction @Respawn => m_Wrapper.m_Player_Respawn;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -205,6 +238,9 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
                 @Charge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharge;
                 @Charge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharge;
                 @Charge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCharge;
+                @Respawn.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
+                @Respawn.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
+                @Respawn.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRespawn;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -215,6 +251,9 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
                 @Charge.started += instance.OnCharge;
                 @Charge.performed += instance.OnCharge;
                 @Charge.canceled += instance.OnCharge;
+                @Respawn.started += instance.OnRespawn;
+                @Respawn.performed += instance.OnRespawn;
+                @Respawn.canceled += instance.OnRespawn;
             }
         }
     }
@@ -223,5 +262,6 @@ public class @InputSystemControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnCharge(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
     }
 }

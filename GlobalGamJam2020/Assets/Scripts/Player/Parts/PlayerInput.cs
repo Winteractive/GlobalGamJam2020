@@ -15,8 +15,7 @@ public class PlayerInput : PlayerPart
         allowedToMove = false;
         InputManager.SetPlayerNumberUpdateDevice(playerNumber, InputManager_OnChanges);
         InputManager_OnChanges();
-        inputs.Player.Charge.started += Charge_started;
-        inputs.Player.Charge.canceled += Charge_canceled;
+        
         GlobalMediator.AddListener(RecieveEvents);
     }
 
@@ -83,6 +82,8 @@ public class PlayerInput : PlayerPart
     {
         inputs?.Disable();
         inputs = InputManager.GetInputActions(playerNumber);
+        inputs.Player.Charge.started += Charge_started;
+        inputs.Player.Charge.canceled += Charge_canceled;
         inputs?.Enable();
     }
 
@@ -104,6 +105,8 @@ public class PlayerInput : PlayerPart
             id = playerNumber,
             axis = inputs.Player.Movement.ReadValue<Vector2>(),
             key_charge = holdingCharge,
+            key_respawn = inputs.Player.Respawn.triggered,
+
         });
     }
 }
